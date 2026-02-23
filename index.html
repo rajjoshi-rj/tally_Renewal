@@ -18,18 +18,11 @@
             100% { transform: translateX(150%) rotate(30deg); }
         }
 
-        .glossy-effect {
-            position: relative;
-            overflow: hidden;
-        }
-
+        .glossy-effect { position: relative; overflow: hidden; }
         .glossy-effect::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
             background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
-            transform: rotate(30deg);
-            animation: shine 4s infinite;
+            transform: rotate(30deg); animation: shine 4s infinite;
         }
 
         /* Feature Matrix Attractions */
@@ -127,6 +120,7 @@
         <section id="formSection" class="max-w-5xl mx-auto rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100 transition-all duration-500">
             <div class="p-10 text-center border-b border-black/5">
                 <h2 class="text-3xl font-black italic uppercase tracking-tighter">Renewal Price</h2>
+                <p class="text-orange-600 text-[10px] font-black uppercase tracking-widest mt-1">Select Edition, Plan & Period</p>
             </div>
 
             <form id="renewalForm" class="p-10 lg:p-14 space-y-10">
@@ -153,16 +147,17 @@
                     <input type="tel" id="phone" placeholder="Mobile Number" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
                 </div>
 
-                <div id="priceCard" class="price-card-dark rounded-[3rem] p-12 lg:p-16 flex flex-col lg:flex-row justify-between items-center transition-all duration-500">
+                <div id="priceCard" class="price-card-dark rounded-[3rem] p-12 lg:p-16 text-white flex flex-col lg:flex-row justify-between items-center transition-all duration-500">
                     <div class="text-center lg:text-left mb-10 lg:mb-0">
                         <div class="flex items-center justify-center lg:justify-start space-x-4 mb-4">
-                            <span class="text-[10px] font-black bg-blue-600 px-4 py-1 rounded-full uppercase tracking-widest border border-white/20">Final Amount</span>
+                            <span class="text-[10px] font-black bg-blue-600 px-4 py-1 rounded-full uppercase tracking-widest border border-white/20">Renewal Price</span>
                             <span id="savingsTag" class="savings-badge">SAVE ₹0 (0%)</span>
                         </div>
-                        <div class="text-8xl font-black italic tracking-tighter" id="grandTotalDisplay">₹0</div>
+                        <div class="text-8xl font-black italic tracking-tighter" id="baseValueDisplay">₹0</div>
+                        
                         <div class="flex flex-wrap justify-center lg:justify-start gap-8 mt-10 opacity-60 text-xs font-black border-t border-white/10 pt-8 uppercase tracking-widest">
-                            <span>RENEWAL: <span id="renewalAmt" class="text-white">₹0</span></span>
                             <span>GST (18%): <span id="gstAmount" class="text-white">₹0</span></span>
+                            <span class="text-orange-400">Total Payable: <span id="grandTotalDisplay" class="text-white">₹0</span></span>
                         </div>
                     </div>
                     
@@ -200,7 +195,7 @@
             const gst = currentPrice * 0.18;
             const total = currentPrice + gst;
 
-            document.getElementById('renewalAmt').innerText = "₹" + currentPrice.toLocaleString('en-IN');
+            document.getElementById('baseValueDisplay').innerText = "₹" + currentPrice.toLocaleString('en-IN');
             document.getElementById('gstAmount').innerText = "₹" + gst.toLocaleString('en-IN');
             document.getElementById('grandTotalDisplay').innerText = "₹" + total.toLocaleString('en-IN');
 
@@ -223,7 +218,6 @@
             const flavor = document.getElementById('flavor').value;
             const plan = document.getElementById('plan').value;
             const duration = document.getElementById('duration').value;
-            
             const subject = `TSS Renewal | ${serial} | ${company}`;
             
             const body = `𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍
@@ -241,7 +235,7 @@
 
 𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍
 ---------------------------------------
-𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐀𝐌𝐎𝐔𝐍𝐓   : ${document.getElementById('renewalAmt').innerText}
+𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐀𝐌𝐎𝐔𝐍𝐓   : ${document.getElementById('baseValueDisplay').innerText}
 𝐆𝐒𝐓 (𝟏𝟖%)        : ${document.getElementById('gstAmount').innerText}
 𝐓𝐎𝐓𝐀𝐋 𝐏𝐀𝐘𝐀𝐁𝐋𝐄    : ${document.getElementById('grandTotalDisplay').innerText}
 
