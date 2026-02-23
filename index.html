@@ -9,270 +9,214 @@
     <style>
         :root { --prajapati-orange: #f37021; --brand-dark: #0f172a; --tally-brand-blue: #149ec2; }
         
-        body { background-color: #ffffff; color: #1e293b; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background 0.5s ease; }
+        body { background-color: #f8fafc; color: #1e293b; font-family: 'Inter', system-ui, sans-serif; transition: background 0.5s ease; }
 
-        /* Enhanced Glossy Animation */
+        /* Realistic Glossy Header Effect */
         @keyframes shine { 
             0% { transform: translateX(-150%) rotate(30deg); } 
             50% { transform: translateX(150%) rotate(30deg); }
             100% { transform: translateX(150%) rotate(30deg); }
         }
 
-        /* INCREASED SIZE FOR HEADERS */
         .glossy-effect {
-            position: relative;
-            overflow: hidden;
-            font-size: 1.25rem !important; /* Larger Header Titles */
-            font-weight: 900 !important;
-            letter-spacing: 0.05em;
+            position: relative; overflow: hidden;
+            font-size: 0.85rem !important; font-weight: 800 !important;
             text-transform: uppercase;
         }
 
         .glossy-effect::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
-            transform: rotate(30deg);
-            animation: shine 4s infinite;
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(30deg); animation: shine 4s infinite;
         }
-
-        /* FEATURE NAME SIZE INCREASE */
-        .feature-name-text {
-            font-size: 1.15rem !important; /* Larger Feature Names */
-            font-weight: 700 !important;
-            color: #1e293b;
-        }
-
-        /* Feature Matrix Attractions */
-        .feature-container { perspective: 1200px; }
-        .feature-table-3d { transform: rotateX(1deg); transition: all 0.5s ease; background: #ffffff; }
-        .feature-row:hover { transform: scale(1.01) translateZ(20px); z-index: 10; background: #fffaf7; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 6px solid var(--prajapati-orange); }
 
         /* Tier Headers */
-        .header-basic { background: linear-gradient(135deg, #475569 0%, #1e293b 100%) !important; color: white !important; border-bottom: 4px solid #0f172a !important; }
-        .header-standard { background: linear-gradient(135deg, #149ec2 0%, #0b6e88 100%) !important; color: white !important; border-bottom: 4px solid #084d5f !important; }
-        .header-premium { background: linear-gradient(135deg, #f37021 0%, #d35400 100%) !important; color: white !important; border-bottom: 4px solid #a04000 !important; }
+        .header-basic { background: linear-gradient(135deg, #475569, #1e293b) !important; color: white !important; }
+        .header-standard { background: linear-gradient(135deg, #149ec2, #0b6e88) !important; color: white !important; }
+        .header-premium { background: linear-gradient(135deg, #f37021, #d35400) !important; color: white !important; }
 
-        /* Dynamic Theme Gradients */
-        .theme-silver { background: linear-gradient(135deg, #e2e8f0 0%, #ffffff 50%, #cbd5e1 100%) !important; border: 1px solid #94a3b8 !important; }
-        .theme-gold { background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 50%, #fde68a 100%) !important; border: 1px solid #d97706 !important; }
+        /* REALISTIC METALLIC FINISH FOR FORM */
+        .theme-silver { 
+            background: linear-gradient(135deg, #bdc3c7 0%, #ffffff 30%, #e3e7e9 50%, #bdc3c7 70%, #95a5a6 100%) !important; 
+            border: 1px solid #7f8c8d !important;
+            box-shadow: inset 0 0 40px rgba(255,255,255,0.6), 0 15px 35px rgba(0,0,0,0.1) !important;
+        }
+        .theme-gold { 
+            background: linear-gradient(135deg, #d4af37 0%, #fff9e3 30%, #f1d592 50%, #d4af37 70%, #9a7b0c 100%) !important; 
+            border: 1px solid #b8860b !important;
+            box-shadow: inset 0 0 40px rgba(255,255,255,0.4), 0 15px 35px rgba(184,134,11,0.2) !important;
+        }
 
-        /* Price Card - Strictly Dark */
-        .price-card-dark { background: linear-gradient(145deg, #0f172a, #1e293b) !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important; color: white !important; }
+        .price-card-dark { background: #0f172a !important; color: white !important; box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
 
-        .tss-header { background-color: var(--brand-dark); color: var(--tally-brand-blue); font-size: 1rem; font-weight: 900; }
-        .support-header { background-color: var(--brand-dark); color: var(--prajapati-orange); font-size: 1rem; font-weight: 900; }
+        .tss-header { background-color: var(--brand-dark); color: var(--tally-brand-blue); font-size: 0.75rem; }
+        .support-header { background-color: var(--brand-dark); color: var(--prajapati-orange); font-size: 0.75rem; }
 
-        /* 3D Buttons */
-        .btn-3d { position: relative; transition: all 0.2s ease; border-bottom: 4px solid rgba(0,0,0,0.4); display: flex; align-items: center; padding-left: 2rem; font-weight: 900; }
-        .btn-3d:hover { transform: translateY(-3px); border-bottom-width: 6px; filter: brightness(1.1); }
-        .btn-3d:active { transform: translateY(2px); border-bottom-width: 0px; }
-        
-        .brand-icon { width: 24px; height: 24px; margin-right: 15px; display: flex; align-items: center; justify-content: center; }
-        .savings-badge { background: #10b981; color: white; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 800; display: none; animation: pulse 2s infinite; }
+        .btn-mail { 
+            transition: all 0.2s ease; border-bottom: 3px solid rgba(0,0,0,0.4); 
+            display: flex; align-items: center; justify-content: center; padding: 10px 5px; 
+            font-weight: 800; font-size: 0.6rem; border-radius: 8px;
+        }
+        .btn-mail:hover { transform: translateY(-2px); border-bottom-width: 4px; }
+        .btn-mail i { font-size: 0.85rem; margin-right: 4px; }
+
+        .landscape-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.5rem; max-width: 1450px; margin: 0 auto; padding: 0 1.5rem; }
+        @media (max-width: 1100px) { .landscape-grid { grid-template-columns: 1fr; } }
+
+        .feature-name-text { font-size: 0.82rem !important; font-weight: 600; color: #334155; }
+        .tick-mark { font-size: 0.95rem; font-weight: 900; }
     </style>
 </head>
 <body onload="updatePrice()">
 
-    <header class="bg-white border-b-2 border-orange-500 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
-            <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="Prajapati Computers" class="h-14 w-auto">
-            <div class="text-right mt-4 md:mt-0">
-                <p class="font-bold text-slate-700 text-sm">
-                    <i class="fa-solid fa-phone text-orange-500 mr-1"></i>
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm mb-6">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex flex-col md:flex-row justify-between items-center">
+            <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="Prajapati Computers" class="h-10 w-auto">
+            <div class="text-center md:text-right mt-2 md:mt-0">
+                <p class="font-bold text-slate-700 text-xs">
+                    <i class="fa-solid fa-phone text-orange-500 mr-1"></i> 
                     079 41056650 | 9106593375 | 9723988859 | 81404 88859
                 </p>
-                <p class="text-[11px] font-black text-blue-700 bg-blue-50 px-4 py-1.5 rounded-full uppercase tracking-wider mt-1 inline-block border border-blue-100">
+                <p class="text-[9px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md uppercase mt-0.5 inline-block border border-blue-100">
                     Experts Available: 10:30 AM - 7:30 PM
                 </p>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-12">
-        <section class="mb-16 text-center">
-            <h2 class="text-6xl font-black text-slate-900 tracking-tighter uppercase italic mb-2">Tally Prime Renewal</h2>
-            <h3 class="text-xl font-bold text-orange-600 uppercase tracking-[0.3em]">Tally Software Services</h3>
-            <div class="h-1.5 w-24 bg-orange-500 mx-auto mt-4 rounded-full shadow-lg"></div>
-        </section>
-
-        <section class="mb-20 feature-container">
-            <div class="overflow-hidden rounded-[2.5rem] shadow-xl border border-slate-200 bg-white feature-table-3d">
+    <div class="landscape-grid">
+        
+        <section>
+            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr>
-                            <th class="p-10 glossy-effect" style="background: #f1f5f9; color: #0f172a;">Features & Services</th>
-                            <th class="p-10 text-center border-l header-basic glossy-effect">Basic</th>
-                            <th class="p-10 text-center border-l header-standard glossy-effect">Standard</th>
-                            <th class="p-10 text-center border-l header-premium glossy-effect">Premium</th>
+                            <th class="p-4 glossy-effect bg-slate-50 text-slate-800">Benefits & Services</th>
+                            <th class="p-4 text-center border-l header-basic glossy-effect">Basic</th>
+                            <th class="p-4 text-center border-l header-standard glossy-effect">Standard</th>
+                            <th class="p-4 text-center border-l header-premium glossy-effect">Premium</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="tss-header">
-                            <td colspan="4" class="p-6 font-black tracking-widest uppercase italic border-b border-white/10">TSS BENEFITS (<span class="normal-case">Tally Solutions Pvt Ltd</span>)</td>
-                        </tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Release Upgrade</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Connected banking & GST</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Connected service for e-way bill</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Connected service for e-invoice</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Browser & Remote Access</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="tss-header"><td colspan="4" class="p-2.5 px-4 font-black tracking-wider uppercase italic">TSS BENEFITS (Tally Solutions Pvt Ltd)</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Release Upgrade</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Connected banking & GST</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Connected service for e-way bill</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Connected service for e-invoice</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Browser and Remote Access</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         
-                        <tr class="support-header">
-                            <td colspan="4" class="p-6 font-black tracking-widest italic border-b border-white/10 uppercase">Support & Service (<span class="normal-case">Prajapati Computers</span>)</td>
-                        </tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Installation & Updates</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Basic Tally Support</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Event Invitations</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Statutory Compliance Support</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">E-invoice & E-way Bill Support</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Customer Visit (within city)</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Customer Satisfaction Manager</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
-                        <tr class="feature-row"><td class="p-8 border-b font-black italic feature-name-text">Priority Resolution</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#f37021] text-2xl">✔</td></tr>
+                        <tr class="support-header"><td colspan="4" class="p-2.5 px-4 font-black tracking-wider italic uppercase">Support & Service (Prajapati Computers)</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Installation & Updates</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Basic Tally Support</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Event Invitations</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Statutory Compliance Support</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">E-invoice & E-way Bill Support</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Customer Visit (within city)</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text">Customer Satisfaction Manager</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-4 feature-name-text font-bold italic text-blue-700">Priority Resolution</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021] text-lg">✔</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <section id="formSection" class="max-w-5xl mx-auto rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100 transition-all duration-500">
-            <div class="p-10 text-center border-b border-black/5">
-                <h2 class="text-3xl font-black italic uppercase tracking-tighter">Renewal Price</h2>
-                <p class="text-orange-600 text-[10px] font-black uppercase tracking-widest mt-1">Select Edition, Plan & Period</p>
+        <section id="formSection" class="rounded-2xl shadow-lg transition-all duration-500 flex flex-col h-fit">
+            <div class="p-5 text-center border-b border-black/5">
+                <h2 class="text-xl font-black italic uppercase">Renewal Details</h2>
+                <p class="text-orange-600 text-[9px] font-black uppercase mt-0.5">Select Edition, Plan & Period</p>
             </div>
 
-            <form id="renewalForm" class="p-10 lg:p-14 space-y-10">
-                <div class="grid md:grid-cols-3 gap-8">
-                    <select id="flavor" class="p-4 rounded-2xl outline-none border-2 border-black/10 font-bold" onchange="updatePrice()">
-                        <option value="SILVER EDITION">SILVER EDITION</option>
-                        <option value="GOLD EDITION">GOLD EDITION</option>
+            <form id="renewalForm" class="p-6 space-y-5">
+                <div class="space-y-3">
+                    <input type="text" id="company" placeholder="Company Name" required class="w-full p-2.5 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
+                    <input type="text" id="serial" placeholder="Serial Number (Starts with 7)" pattern="7[0-9]{8}" required class="w-full p-2.5 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" id="person" placeholder="Contact Name" required class="p-2.5 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
+                        <input type="tel" id="phone" placeholder="Contact Number" required class="p-2.5 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 pt-3 border-t border-black/5">
+                    <select id="flavor" class="p-2 rounded-lg border border-slate-300 font-bold text-[10px] bg-white/80" onchange="updatePrice()">
+                        <option value="SILVER EDITION (Single User)">Silver (Single User)</option>
+                        <option value="GOLD EDITION (Multi User)">Gold (MultiUser)</option>
                     </select>
-                    <select id="plan" class="p-4 rounded-2xl outline-none border-2 border-black/10 font-bold" onchange="updatePrice()">
-                        <option value="BASIC PLAN">BASIC PLAN</option>
-                        <option value="STANDARD PLAN">STANDARD PLAN</option>
-                        <option value="PREMIUM PLAN">PREMIUM PLAN</option>
+                    <select id="plan" class="p-2 rounded-lg border border-slate-300 font-bold text-[10px] bg-white/80" onchange="updatePrice()">
+                        <option value="BASIC PLAN">Basic Plan</option>
+                        <option value="STANDARD PLAN">Standard Plan</option>
+                        <option value="PREMIUM PLAN">Premium Plan</option>
                     </select>
-                    <select id="duration" class="p-4 rounded-2xl outline-none border-2 border-black/10 font-bold" onchange="updatePrice()">
-                        <option value="1">1 YEAR RENEWAL</option>
-                        <option value="2">2 YEAR RENEWAL</option>
+                    <select id="duration" class="p-2 rounded-lg border border-slate-300 font-bold text-[10px] bg-white/80" onchange="updatePrice()">
+                        <option value="1">1 Year</option>
+                        <option value="2">2 Year</option>
                     </select>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-10 pt-8 border-t border-black/5">
-                    <input type="text" id="company" placeholder="Company Name" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
-                    <input type="text" id="person" placeholder="Contact Person" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
-                    <input type="text" id="serial" placeholder="Serial No" pattern="7[0-9]{8}" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
-                    <input type="tel" id="phone" placeholder="Mobile Number" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
-                </div>
-
-                <div id="priceCard" class="price-card-dark rounded-[3rem] p-12 lg:p-16 flex flex-col lg:flex-row justify-between items-center transition-all duration-500">
-                    <div class="text-center lg:text-left mb-10 lg:mb-0">
-                        <div class="flex items-center justify-center lg:justify-start space-x-4 mb-4">
-                            <span class="text-[10px] font-black bg-blue-600 px-4 py-1 rounded-full uppercase tracking-widest border border-white/20">Renewal Price</span>
-                            <span id="savingsTag" class="savings-badge">SAVE ₹0 (0%)</span>
+                <div id="priceCard" class="price-card-dark rounded-2xl p-5 flex flex-col space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[8px] font-black bg-blue-600 px-2 py-0.5 rounded uppercase">Base Amount</span>
+                            <div class="text-5xl font-black italic tracking-tighter mt-1" id="renewalAmt">₹0</div>
                         </div>
-                        <div class="text-8xl font-black italic tracking-tighter" id="baseValueDisplay">₹0</div>
-                        
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-8 mt-10 opacity-60 text-xs font-black border-t border-white/10 pt-8 uppercase tracking-widest">
-                            <span>RENEWAL AMOUNT: <span id="renewalAmt" class="text-white">₹0</span></span>
-                            <span>GST (18%): <span id="gstAmount" class="text-white">₹0</span></span>
-                            <span class="text-orange-400">TOTAL PAYABLE: <span id="grandTotalDisplay" class="text-white">₹0</span></span>
+                        <span id="savingsTag" class="bg-green-500 text-white px-2 py-1 rounded text-[10px] font-black hidden">SAVE ₹0</span>
+                    </div>
+                    
+                    <div class="space-y-2 border-t border-white/10 pt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[9px] font-black uppercase opacity-60">GST (18%):</span> 
+                            <span id="gstAmount" class="text-base font-bold text-white">₹0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-orange-400">
+                            <span class="text-[10px] font-black uppercase">Net Payable:</span> 
+                            <span id="grandTotalDisplay" class="text-2xl font-black text-white">₹0</span>
                         </div>
                     </div>
                     
-                    <div class="flex flex-col space-y-4 w-full lg:w-80">
-                        <p class="text-xs font-black text-center uppercase tracking-[0.3em] mb-2 bg-white/10 py-2 rounded-lg">SHARE VIA</p>
-                        <button type="button" onclick="sendMail('gmail')" class="btn-3d py-4 bg-[#ea4335] text-white rounded-2xl italic"><span class="brand-icon"><i class="fa-brands fa-google"></i></span> GMAIL</button>
-                        <button type="button" onclick="sendMail('yahoo')" class="btn-3d py-4 bg-[#6001d2] text-white rounded-2xl italic"><span class="brand-icon"><i class="fa-brands fa-yahoo"></i></span> YAHOO MAIL</button>
-                        <button type="button" onclick="sendMail('outlook')" class="btn-3d py-4 bg-[#0078d4] text-white rounded-2xl italic"><span class="brand-icon"><i class="fa-brands fa-microsoft"></i></span> OUTLOOK</button>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" onclick="sendMail('gmail')" class="btn-mail bg-[#ea4335] text-white">
+                            <i class="fa-brands fa-google"></i> GMAIL
+                        </button>
+                        <button type="button" onclick="sendMail('yahoo')" class="btn-mail bg-[#6001d2] text-white">
+                            <i class="fa-brands fa-yahoo"></i> YAHOO
+                        </button>
+                        <button type="button" onclick="sendMail('outlook')" class="btn-mail bg-[#0078d4] text-white">
+                            <i class="fa-brands fa-microsoft"></i> OUTLOOK
+                        </button>
                     </div>
                 </div>
             </form>
         </section>
-    </main>
-
-    <footer class="bg-white border-t-2 border-orange-500 py-12 mt-20 text-center">
-        <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="PC Logo" class="h-10 mx-auto mb-6">
-        <p class="text-slate-400 text-[10px] uppercase font-black tracking-[0.4em]">© 2026 Prajapati Computers | Certified Tally Partner Since 2011</p>
-    </footer>
+    </div>
 
     <script>
         const pricing = {
-            "SILVER EDITION": { "BASIC PLAN": { 1: 4500, 2: 8100 }, "STANDARD PLAN": { 1: 7500, 2: 14100 }, "PREMIUM PLAN": { 1: 11250, 2: 21600 } },
-            "GOLD EDITION": { "BASIC PLAN": { 1: 13500, 2: 24300 }, "STANDARD PLAN": { 1: 18750, 2: 34800 }, "PREMIUM PLAN": { 1: 25000, 2: 47300 } }
+            "SILVER EDITION (Single User)": { "BASIC PLAN": { 1: 4500, 2: 8100 }, "STANDARD PLAN": { 1: 7500, 2: 14100 }, "PREMIUM PLAN": { 1: 11250, 2: 21600 } },
+            "GOLD EDITION (Multi User)": { "BASIC PLAN": { 1: 13500, 2: 24300 }, "STANDARD PLAN": { 1: 18750, 2: 34800 }, "PREMIUM PLAN": { 1: 25000, 2: 47300 } }
         };
 
         function updatePrice() {
-            const f = document.getElementById('flavor').value;
-            const p = document.getElementById('plan').value;
-            const d = document.getElementById('duration').value;
+            const f = document.getElementById('flavor').value, p = document.getElementById('plan').value, d = document.getElementById('duration').value;
             const section = document.getElementById('formSection');
-
-            section.className = f.includes("SILVER") ? "max-w-5xl mx-auto rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-500 theme-silver" : "max-w-5xl mx-auto rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-500 theme-gold";
-
-            const currentPrice = pricing[f][p][d];
-            const gst = currentPrice * 0.18;
-            const total = currentPrice + gst;
-
-            document.getElementById('baseValueDisplay').innerText = "₹" + currentPrice.toLocaleString('en-IN');
-            document.getElementById('renewalAmt').innerText = "₹" + currentPrice.toLocaleString('en-IN');
+            section.className = f.includes("SILVER") ? "rounded-2xl shadow-lg transition-all duration-500 theme-silver flex flex-col h-fit" : "rounded-2xl shadow-lg transition-all duration-500 theme-gold flex flex-col h-fit";
+            const base = pricing[f][p][d], gst = base * 0.18, total = base + gst;
+            document.getElementById('renewalAmt').innerText = "₹" + base.toLocaleString('en-IN');
             document.getElementById('gstAmount').innerText = "₹" + gst.toLocaleString('en-IN');
             document.getElementById('grandTotalDisplay').innerText = "₹" + total.toLocaleString('en-IN');
-
-            const savingsTag = document.getElementById('savingsTag');
+            const tag = document.getElementById('savingsTag');
             if (d === "2") {
-                const savings = (pricing[f][p][1] * 2) - currentPrice;
-                const savingsPercent = Math.round((savings / (pricing[f][p][1] * 2)) * 100);
-                savingsTag.innerText = `SAVE ₹${savings.toLocaleString('en-IN')} (${savingsPercent}%)`;
-                savingsTag.style.display = "inline-block";
-            } else { savingsTag.style.display = "none"; }
+                const save = (pricing[f][p][1] * 2) - base;
+                tag.innerText = `SAVE ₹${save.toLocaleString('en-IN')}`; tag.style.display = "block";
+            } else { tag.style.display = "none"; }
         }
 
         function sendMail(service) {
-            const company = document.getElementById('company').value;
-            const person = document.getElementById('person').value;
-            const serial = document.getElementById('serial').value;
-            const phone = document.getElementById('phone').value;
-            if(!company || !serial || !person) { alert("Fill all details."); return; }
-            
-            const subject = `TSS Renewal | ${serial} | ${company}`;
-            const body = `𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍
----------------------------------------
-𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐍𝐀𝐌𝐄     : ${company}
-𝐂𝐋𝐈𝐄𝐍𝐓 𝐍𝐀𝐌𝐄      : ${person}
-𝐌𝐎𝐁𝐈𝐋𝐄 𝐍𝐔𝐌𝐁𝐄𝐑    : ${phone}
-𝐓𝐀𝐋𝐋𝐘 𝐒𝐄𝐑𝐈𝐀𝐋 𝐍𝐎  : ${serial}
-
-𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍
----------------------------------------
-𝐋𝐈𝐂𝐄𝐍𝐒𝐄 𝐄𝐃𝐈𝐓𝐈𝐎𝐍  : ${document.getElementById('flavor').value}
-𝐒𝐄𝐑𝐕𝐈𝐂𝐄 𝐏𝐋𝐀𝐍      : ${document.getElementById('plan').value}
-𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐏𝐄𝐑𝐈𝐎𝐃   : ${document.getElementById('duration').value} YEAR(S)
-
-𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍
----------------------------------------
-𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐀𝐌𝐎𝐔𝐍𝐓   : ${document.getElementById('baseValueDisplay').innerText}
-𝐆𝐒𝐓 (𝟏𝟖%)        : ${document.getElementById('gstAmount').innerText}
-𝐓𝐎𝐓𝐀𝐋 𝐏𝐀𝐘𝐀𝐁𝐋𝐄    : ${document.getElementById('grandTotalDisplay').innerText}
-
----------------------------------------
-Request generated via Renewal Portal.`;
-
-            const to = "tally.tss@prajapaticomputers.in";
-            const cc = "vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in";
-            
-            const encodedTo = encodeURIComponent(to);
-            const encodedCc = encodeURIComponent(cc);
-            const encodedSubject = encodeURIComponent(subject);
-            const encodedBody = encodeURIComponent(body);
-
-            const mailUrl = service === 'gmail' 
-                ? `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedTo}&cc=${encodedCc}&su=${encodedSubject}&body=${encodedBody}`
-                : `mailto:${to}?cc=${cc}&subject=${encodedSubject}&body=${encodedBody}`;
-
-            window.open(mailUrl, '_blank');
+            const c = document.getElementById('company').value, ps = document.getElementById('person').value, s = document.getElementById('serial').value, ph = document.getElementById('phone').value;
+            if(!c || !s || !ps || !ph) { alert("Fill all details."); return; }
+            const sub = `TSS Renewal | ${s} | ${c}`;
+            const body = `𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒\n--------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓: ${ps} (${ph})\n\n𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n--------------------\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${document.getElementById('flavor').value}\n𝐏𝐋𝐀𝐍: ${document.getElementById('plan').value}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${document.getElementById('duration').value} Year\n\n𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n--------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ${document.getElementById('renewalAmt').innerText}\n𝐆𝐒𝐓 (𝟏𝟖%): ${document.getElementById('gstAmount').innerText}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${document.getElementById('grandTotalDisplay').innerText}`;
+            const to = "tally.tss@prajapaticomputers.in", cc = "vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in";
+            let url = service === 'gmail' ? `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&su=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}` : service === 'yahoo' ? `https://compose.mail.yahoo.com/?to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}` : `mailto:${to}?cc=${cc}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
+            window.open(url, '_blank');
         }
     </script>
 </body>
 </html>
-
-
