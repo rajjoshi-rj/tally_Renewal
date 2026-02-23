@@ -11,10 +11,8 @@
         
         body { 
             background: radial-gradient(circle at top right, #fff5ee 0%, #e0f2f7 50%, #f0f4f8 100%);
-            color: #1e293b; 
-            font-family: 'Inter', system-ui, sans-serif; 
-            height: 100vh;
-            overflow: hidden;
+            color: #1e293b; font-family: 'Inter', system-ui, sans-serif; 
+            height: 100vh; overflow: hidden;
         }
 
         @keyframes shine { 
@@ -23,29 +21,11 @@
             100% { transform: translateX(150%) rotate(30deg); }
         }
 
-        .glossy-effect {
-            position: relative; overflow: hidden;
-            font-size: 0.95rem !important; font-weight: 800 !important;
-            text-transform: uppercase;
-        }
+        .glossy-effect { position: relative; overflow: hidden; font-size: 0.95rem !important; font-weight: 800 !important; text-transform: uppercase; }
+        .glossy-effect::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent); transform: rotate(30deg); animation: shine 4s infinite; }
 
-        .glossy-effect::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(30deg); animation: shine 4s infinite;
-        }
-
-        /* METALLIC THEMES */
-        .theme-silver { 
-            background: linear-gradient(135deg, #bdc3c7 0%, #ffffff 30%, #e3e7e9 50%, #bdc3c7 100%) !important; 
-            border: 1px solid #7f8c8d !important;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
-        }
-        .theme-gold { 
-            background: linear-gradient(135deg, #d4af37 0%, #fff9e3 30%, #f1d592 50%, #d4af37 100%) !important; 
-            border: 1px solid #b8860b !important;
-            box-shadow: 0 15px 30px rgba(184,134,11,0.15) !important;
-        }
+        .theme-silver { background: linear-gradient(135deg, #bdc3c7 0%, #ffffff 30%, #e3e7e9 50%, #bdc3c7 100%) !important; border: 1px solid #7f8c8d !important; box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; }
+        .theme-gold { background: linear-gradient(135deg, #d4af37 0%, #fff9e3 30%, #f1d592 50%, #d4af37 100%) !important; border: 1px solid #b8860b !important; box-shadow: 0 15px 30px rgba(184,134,11,0.15) !important; }
 
         .header-basic { background: #1e293b !important; color: white !important; }
         .header-standard { background: #149ec2 !important; color: white !important; }
@@ -53,38 +33,19 @@
 
         .price-card-dark { background: #0f172a !important; color: white !important; }
 
-        /* GRID: Expand Features, Tighten Form */
-        .landscape-grid { 
-            display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 1.5rem; 
-            max-width: 1550px; margin: 0 auto; padding: 0 1.5rem 1.5rem 1.5rem; align-items: start;
-        }
-
+        .landscape-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 1.5rem; max-width: 1550px; margin: 0 auto; padding: 0 1.5rem 1.5rem 1.5rem; align-items: start; }
         @media (max-width: 1024px) { .landscape-grid { grid-template-columns: 1fr; overflow-y: auto; height: auto; } }
 
-        .feature-name-text { font-size: 0.85rem !important; font-weight: 700; color: #0f172a; }
-        .tick-mark { font-size: 1rem; font-weight: 900; }
-        
-        .tss-row { background-color: var(--brand-dark); color: var(--tally-brand-blue); }
-        .support-row { background-color: var(--brand-dark); color: var(--prajapati-orange); }
+        .feature-name-text { font-size: 0.8rem !important; font-weight: 700; color: #0f172a; }
+        .tick-mark { font-size: 0.95rem; font-weight: 900; }
+        .tss-row { background-color: var(--brand-dark); color: var(--tally-brand-blue); font-size: 9px; }
+        .support-row { background-color: var(--brand-dark); color: var(--prajapati-orange); font-size: 9px; }
 
         .btn-mail { font-size: 0.7rem; font-weight: 900; border-radius: 8px; transition: transform 0.2s; padding: 10px; }
         .btn-mail:hover { transform: translateY(-3px); }
 
-        .share-via-highlight {
-            background: rgba(255, 255, 255, 0.1); padding: 2px 12px; border-radius: 99px;
-            color: #ffffff; font-size: 9px; font-weight: 900; letter-spacing: 0.2em;
-            display: inline-block; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* PLUS 2 POINT SIZE SELECTORS */
-        .select-xl {
-            font-size: 16px !important; /* Increased size */
-            padding: 10px !important;
-            font-weight: 800 !important;
-            border-radius: 10px !important;
-            width: 100%;
-            cursor: pointer;
-        }
+        .share-via-highlight { background: rgba(255, 255, 255, 0.1); padding: 2px 12px; border-radius: 99px; color: #ffffff; font-size: 9px; font-weight: 900; letter-spacing: 0.2em; display: inline-block; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.2); }
+        .select-xl { font-size: 16px !important; padding: 10px !important; font-weight: 800 !important; border-radius: 10px !important; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body onload="updatePrice()">
@@ -93,19 +54,13 @@
         <div class="max-w-[1550px] mx-auto px-8 py-3 flex flex-col md:flex-row justify-between items-center">
             <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="Prajapati Computers" class="h-20 w-auto">
             <div class="text-center md:text-right mt-2 md:mt-0">
-                <p class="font-black text-slate-800 text-base">
-                    <i class="fa-solid fa-phone text-orange-500 mr-1"></i> 
-                    079 41056650 | 9106593375 | 9723988859 | 81404 88859
-                </p>
-                <p class="text-[9px] font-bold text-blue-700 bg-blue-50 px-4 py-1 rounded-full uppercase mt-1 inline-block border border-blue-100">
-                    Experts Available: 10:30 AM - 7:30 PM
-                </p>
+                <p class="font-black text-slate-800 text-base">079 41056650 | 9106593375 | 9723988859 | 81404 88859</p>
+                <p class="text-[9px] font-bold text-blue-700 bg-blue-50 px-4 py-1 rounded-full uppercase mt-1 inline-block border border-blue-100">Experts Available: 10:30 AM - 7:30 PM</p>
             </div>
         </div>
     </header>
 
     <div class="landscape-grid">
-        
         <section>
             <div class="bg-white rounded-[2rem] shadow-2xl border border-slate-200 overflow-hidden">
                 <table class="w-full text-left border-collapse">
@@ -118,21 +73,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="tss-row"><td colspan="4" class="p-2 px-8 font-black tracking-widest uppercase italic text-[10px]">TSS BENEFITS (Tally Solutions)</td></tr>
+                        <tr class="tss-row"><td colspan="4" class="p-2 px-8 font-black tracking-widest uppercase italic">TSS BENEFITS (Tally Solutions)</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Release Upgrade</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Connected banking & GST</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Connected service for e-way bill</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Connected service for e-invoice</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Browser and Remote Access</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         
-                        <tr class="support-row"><td colspan="4" class="p-2 px-8 font-black tracking-widest italic uppercase text-[10px]">Support & Service (Prajapati)</td></tr>
+                        <tr class="support-row"><td colspan="4" class="p-2 px-8 font-black tracking-widest italic uppercase">Support & Service (Prajapati)</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Installation & Updates</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Basic Tally Support</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Event Invitations</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Statutory Support</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">E-invoice & E-way Support</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Customer Visit (within city)</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Customer Satisfaction Mgr</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="p-2.5 px-8 feature-name-text">Customer Satisfaction Manager</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
                         <tr class="border-b"><td class="p-2.5 px-8 feature-name-text font-black italic text-blue-800">Priority Resolution</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021] text-2xl">✔</td></tr>
                     </tbody>
                 </table>
@@ -147,7 +102,7 @@
             <form id="renewalForm" class="p-5 space-y-4">
                 <div class="space-y-4">
                     <input type="text" id="company" placeholder="Company Name" required class="w-full p-2 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
-                    <input type="text" id="serial" placeholder="Serial No (Starts with 7)" pattern="7[0-9]{8}" required class="w-full p-2 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
+                    <input type="text" id="serial" placeholder="Tally License Number" required pattern="7[0-9]{8}" maxlength="9" class="w-full p-2 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
                     <input type="text" id="person" placeholder="Contact Name" required class="w-full p-2 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
                     <input type="tel" id="phone" placeholder="Contact Number" required class="w-full p-2 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
                 </div>
@@ -193,9 +148,9 @@
                     <div class="text-center pt-1">
                         <span class="share-via-highlight">SHARE VIA</span>
                         <div class="grid grid-cols-3 gap-2">
-                            <button type="button" onclick="sendMail('gmail')" class="btn-mail bg-[#ea4335] text-white">GMAIL</button>
-                            <button type="button" onclick="sendMail('yahoo')" class="btn-mail bg-[#6001d2] text-white">YAHOO</button>
-                            <button type="button" onclick="sendMail('outlook')" class="btn-mail bg-[#0078d4] text-white">OUTLOOK</button>
+                            <button type="button" onclick="sendMail('gmail')" class="btn-mail bg-[#ea4335] text-white"><i class="fa-brands fa-google"></i> GMAIL</button>
+                            <button type="button" onclick="sendMail('yahoo')" class="btn-mail bg-[#6001d2] text-white"><i class="fa-brands fa-yahoo"></i> YAHOO</button>
+                            <button type="button" onclick="sendMail('outlook')" class="btn-mail bg-[#0078d4] text-white"><i class="fa-brands fa-microsoft"></i> OUTLOOK</button>
                         </div>
                     </div>
                 </div>
@@ -225,10 +180,12 @@
         }
 
         function sendMail(service) {
+            const form = document.getElementById('renewalForm');
+            if (!form.checkValidity()) { form.reportValidity(); return; }
             const c = document.getElementById('company').value, ps = document.getElementById('person').value, s = document.getElementById('serial').value, ph = document.getElementById('phone').value;
-            if(!c || !s || !ps || !ph) { alert("Please complete all fields."); return; }
+            const f = document.getElementById('flavor').value, p = document.getElementById('plan').value, d = document.getElementById('duration').value;
             const sub = `TSS Renewal | ${s} | ${c}`;
-            const body = `𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍\n--------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐀𝐌𝐄: ${ps}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐔𝐌𝐁𝐄𝐑: ${ph}\n\n𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n--------------------\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${document.getElementById('flavor').value}\n𝐏𝐋𝐀𝐍: ${document.getElementById('plan').value}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${document.getElementById('duration').value}\n\n\n\n𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n--------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ${document.getElementById('renewalAmt').innerText}\n𝐆𝐒𝐓 (𝟏𝟖%): ${document.getElementById('gstAmount').innerText}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${document.getElementById('grandTotalDisplay').innerText}`;
+            const body = `𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍\n--------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐀𝐌𝐄: ${ps}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐔𝐌𝐁𝐄𝐑: ${ph}\n\n𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n--------------------\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${f}\n𝐏𝐋𝐀𝐍: ${p}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${d}\n\n𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n--------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ${document.getElementById('renewalAmt').innerText}\n𝐆𝐒𝐓 (𝟏𝟖%): ${document.getElementById('gstAmount').innerText}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${document.getElementById('grandTotalDisplay').innerText}`;
             const to = "tally.tss@prajapaticomputers.in", cc = "vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in";
             let url = service === 'gmail' ? `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&su=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}` : service === 'yahoo' ? `https://compose.mail.yahoo.com/?to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}` : `mailto:${to}?cc=${cc}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
             window.open(url, '_blank');
