@@ -35,7 +35,7 @@
         .header-standard { background: linear-gradient(135deg, #149ec2, #0b6e88) !important; color: white !important; }
         .header-premium { background: linear-gradient(135deg, #f37021, #d35400) !important; color: white !important; }
 
-        /* REALISTIC METALLIC FINISH FOR FORM */
+        /* REALISTIC METALLIC FINISH */
         .theme-silver { 
             background: linear-gradient(135deg, #bdc3c7 0%, #ffffff 30%, #e3e7e9 50%, #bdc3c7 70%, #95a5a6 100%) !important; 
             border: 1px solid #7f8c8d !important;
@@ -55,13 +55,21 @@
         .btn-mail { 
             transition: all 0.2s ease; border-bottom: 3px solid rgba(0,0,0,0.4); 
             display: flex; align-items: center; justify-content: center; padding: 10px 5px; 
-            font-weight: 800; font-size: 0.6rem; border-radius: 8px;
+            font-weight: 800; font-size: 0.65rem; border-radius: 8px;
         }
         .btn-mail:hover { transform: translateY(-2px); border-bottom-width: 4px; }
-        .btn-mail i { font-size: 0.85rem; margin-right: 4px; }
 
-        .landscape-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.5rem; max-width: 1450px; margin: 0 auto; padding: 0 1.5rem; }
-        @media (max-width: 1100px) { .landscape-grid { grid-template-columns: 1fr; } }
+        /* SCREEN FIT LAYOUT */
+        .landscape-grid { 
+            display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.5rem; 
+            max-width: 1600px; margin: 0 auto; padding: 0 1.5rem; align-items: start;
+        }
+
+        @media (max-width: 1024px) { 
+            .landscape-grid { grid-template-columns: 1fr; } 
+            .logo-img { height: 45px !important; }
+            .contact-text { font-size: 11px !important; }
+        }
 
         .feature-name-text { font-size: 0.82rem !important; font-weight: 600; color: #334155; }
         .tick-mark { font-size: 0.95rem; font-weight: 900; }
@@ -69,15 +77,15 @@
 </head>
 <body onload="updatePrice()">
 
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm mb-6">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex flex-col md:flex-row justify-between items-center">
-            <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="Prajapati Computers" class="h-10 w-auto">
-            <div class="text-center md:text-right mt-2 md:mt-0">
-                <p class="font-bold text-slate-700 text-xs">
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm mb-4">
+        <div class="max-w-[1600px] mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+            <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="Prajapati Computers" class="h-14 md:h-16 w-auto logo-img">
+            <div class="text-center md:text-right mt-3 md:mt-0">
+                <p class="font-black text-slate-800 text-sm md:text-base contact-text">
                     <i class="fa-solid fa-phone text-orange-500 mr-1"></i> 
-                    079 41056650 | 9106593375 | 9723988859 | 81404 88859
+                    079 4105 6650 | 91065 93375 | 97239 88859 | 81404 88859
                 </p>
-                <p class="text-[9px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md uppercase mt-0.5 inline-block border border-blue-100">
+                <p class="text-[10px] md:text-xs font-black text-blue-700 bg-blue-50 px-3 py-1 rounded-md uppercase mt-1 inline-block border border-blue-100">
                     Experts Available: 10:30 AM - 7:30 PM
                 </p>
             </div>
@@ -86,7 +94,7 @@
 
     <div class="landscape-grid">
         
-        <section>
+        <section class="mb-8 md:mb-0">
             <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
                 <table class="w-full text-left border-collapse">
                     <thead>
@@ -119,23 +127,23 @@
             </div>
         </section>
 
-        <section id="formSection" class="rounded-2xl shadow-lg transition-all duration-500 flex flex-col h-fit">
+        <section id="formSection" class="rounded-2xl shadow-lg transition-all duration-500 flex flex-col h-full">
             <div class="p-5 text-center border-b border-black/5">
                 <h2 class="text-xl font-black italic uppercase">Renewal Details</h2>
                 <p class="text-orange-600 text-[9px] font-black uppercase mt-0.5">Select Edition, Plan & Period</p>
             </div>
 
-            <form id="renewalForm" class="p-6 space-y-5">
-                <div class="space-y-3">
-                    <input type="text" id="company" placeholder="Company Name" required class="w-full p-2.5 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
-                    <input type="text" id="serial" placeholder="Serial Number (Starts with 7)" pattern="7[0-9]{8}" required class="w-full p-2.5 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
-                    <div class="grid grid-cols-2 gap-3">
-                        <input type="text" id="person" placeholder="Contact Name" required class="p-2.5 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
-                        <input type="tel" id="phone" placeholder="Contact Number" required class="p-2.5 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent">
+            <form id="renewalForm" class="p-6 space-y-5 flex-grow">
+                <div class="space-y-4">
+                    <input type="text" id="company" placeholder="Company Name" required class="w-full p-3 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent placeholder:text-slate-500">
+                    <input type="text" id="serial" placeholder="Serial Number (Starts with 7)" pattern="7[0-9]{8}" required class="w-full p-3 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent placeholder:text-slate-500">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" id="person" placeholder="Contact Name" required class="p-3 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent placeholder:text-slate-500">
+                        <input type="tel" id="phone" placeholder="Contact Number" required class="p-3 border-b-2 border-black/10 outline-none font-bold text-sm bg-transparent placeholder:text-slate-500">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-3 gap-2 pt-3 border-t border-black/5">
+                <div class="grid grid-cols-3 gap-2 pt-4 border-t border-black/5">
                     <select id="flavor" class="p-2 rounded-lg border border-slate-300 font-bold text-[10px] bg-white/80" onchange="updatePrice()">
                         <option value="SILVER EDITION (Single User)">Silver (Single User)</option>
                         <option value="GOLD EDITION (Multi User)">Gold (MultiUser)</option>
@@ -151,19 +159,19 @@
                     </select>
                 </div>
 
-                <div id="priceCard" class="price-card-dark rounded-2xl p-5 flex flex-col space-y-4">
+                <div id="priceCard" class="price-card-dark rounded-2xl p-5 mt-auto flex flex-col space-y-4">
                     <div class="flex justify-between items-start">
                         <div>
                             <span class="text-[8px] font-black bg-blue-600 px-2 py-0.5 rounded uppercase">Base Amount</span>
                             <div class="text-5xl font-black italic tracking-tighter mt-1" id="renewalAmt">₹0</div>
                         </div>
-                        <span id="savingsTag" class="bg-green-500 text-white px-2 py-1 rounded text-[10px] font-black hidden">SAVE ₹0</span>
+                        <span id="savingsTag" class="bg-green-500 text-white px-2 py-1 rounded text-[10px] font-black hidden animate-bounce">SAVE ₹0</span>
                     </div>
                     
                     <div class="space-y-2 border-t border-white/10 pt-3">
                         <div class="flex justify-between items-center">
                             <span class="text-[9px] font-black uppercase opacity-60">GST (18%):</span> 
-                            <span id="gstAmount" class="text-base font-bold text-white">₹0</span>
+                            <span id="gstAmount" class="text-base font-bold">₹0</span>
                         </div>
                         <div class="flex justify-between items-center text-orange-400">
                             <span class="text-[10px] font-black uppercase">Net Payable:</span> 
@@ -196,7 +204,7 @@
         function updatePrice() {
             const f = document.getElementById('flavor').value, p = document.getElementById('plan').value, d = document.getElementById('duration').value;
             const section = document.getElementById('formSection');
-            section.className = f.includes("SILVER") ? "rounded-2xl shadow-lg transition-all duration-500 theme-silver flex flex-col h-fit" : "rounded-2xl shadow-lg transition-all duration-500 theme-gold flex flex-col h-fit";
+            section.className = f.includes("SILVER") ? "rounded-2xl shadow-lg transition-all duration-500 theme-silver flex flex-col h-full" : "rounded-2xl shadow-lg transition-all duration-500 theme-gold flex flex-col h-full";
             const base = pricing[f][p][d], gst = base * 0.18, total = base + gst;
             document.getElementById('renewalAmt').innerText = "₹" + base.toLocaleString('en-IN');
             document.getElementById('gstAmount').innerText = "₹" + gst.toLocaleString('en-IN');
@@ -210,7 +218,7 @@
 
         function sendMail(service) {
             const c = document.getElementById('company').value, ps = document.getElementById('person').value, s = document.getElementById('serial').value, ph = document.getElementById('phone').value;
-            if(!c || !s || !ps || !ph) { alert("Fill all details."); return; }
+            if(!c || !s || !ps || !ph) { alert("Please complete all details."); return; }
             const sub = `TSS Renewal | ${s} | ${c}`;
             const body = `𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒\n--------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓: ${ps} (${ph})\n\n𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n--------------------\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${document.getElementById('flavor').value}\n𝐏𝐋𝐀𝐍: ${document.getElementById('plan').value}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${document.getElementById('duration').value} Year\n\n𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n--------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ${document.getElementById('renewalAmt').innerText}\n𝐆𝐒𝐓 (𝟏𝟖%): ${document.getElementById('gstAmount').innerText}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${document.getElementById('grandTotalDisplay').innerText}`;
             const to = "tally.tss@prajapaticomputers.in", cc = "vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in";
