@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TallyPrime Renewal | Prajapati Computers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --prajapati-orange: #f37021; --brand-dark: #0f172a; --tally-brand-blue: #149ec2; }
+        
+        body { background-color: #ffffff; color: #1e293b; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background 0.5s ease; }
+
+        /* Feature Matrix Attractions */
+        .feature-container { perspective: 1200px; }
+        .feature-table-3d { transform: rotateX(1deg); transition: all 0.5s ease; background: #ffffff; }
+        .feature-row { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-bottom: 1px solid #f1f5f9; }
+        .feature-row:hover { transform: scale(1.01) translateZ(20px); z-index: 10; background: #fffaf7; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid var(--prajapati-orange); }
+
+        /* Dynamic Theme Gradients for Form only */
+        .theme-silver { 
+            background: linear-gradient(135deg, #e2e8f0 0%, #ffffff 50%, #cbd5e1 100%) !important; 
+            border: 1px solid #94a3b8 !important;
+            color: #1e293b !important;
+        }
+        .theme-gold { 
+            background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 50%, #fde68a 100%) !important; 
+            border: 1px solid #d97706 !important;
+            color: #451a03 !important;
+        }
+
+        /* Price Card - Strictly Dark as per request */
+        .price-card-dark { 
+            background: linear-gradient(145deg, #0f172a, #1e293b) !important; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+            color: white !important;
+        }
+
+        /* Tier Specific Colors */
+        .header-basic { background-color: #475569 !important; color: white !important; }
+        .header-standard { background-color: #2563eb !important; color: white !important; }
+        .header-premium { background-color: var(--prajapati-orange) !important; color: white !important; }
+
+        .light-basic { background-color: rgba(71, 85, 105, 0.04); }
+        .light-standard { background-color: rgba(37, 99, 235, 0.04); }
+        .light-premium { background-color: rgba(243, 112, 33, 0.06); }
+
+        .tss-header { background-color: var(--brand-dark); color: var(--tally-brand-blue); }
+        .support-header { background-color: var(--brand-dark); color: var(--prajapati-orange); }
+
+        /* 3D Buttons */
+        .btn-3d { position: relative; transition: all 0.2s ease; border-bottom: 4px solid rgba(0,0,0,0.4); display: flex; align-items: center; padding-left: 2rem; font-weight: 900; }
+        .btn-3d:hover { transform: translateY(-3px); border-bottom-width: 6px; filter: brightness(1.1); }
+        .btn-3d:active { transform: translateY(2px); border-bottom-width: 0px; }
+        .brand-icon { width: 24px; height: 24px; margin-right: 15px; display: flex; align-items: center; justify-content: center; }
+
+        .savings-badge { background: #10b981; color: white; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 800; display: none; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    </style>
+</head>
+<body onload="updatePrice()">
+
+    <header class="bg-white border-b-2 border-orange-500 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+            <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="Prajapati Computers" class="h-14 w-auto">
+            <div class="text-right mt-4 md:mt-0">
+                <p class="font-bold text-slate-700 text-sm">
+                    <i class="fa-solid fa-phone text-orange-500 mr-1"></i>
+                    079 41056650 | 9106593375 | 9723988859 | 81404 88859
+                </p>
+                <p class="text-[10px] font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider mt-1 inline-block">
+                    Experts Available: 10:00 AM - 7:30 PM
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <section class="mb-16 text-center">
+            <h2 class="text-6xl font-black text-slate-900 tracking-tighter uppercase italic mb-2">Tally Prime Renewal</h2>
+            <h3 class="text-xl font-bold text-orange-600 uppercase tracking-[0.3em]">Tally Software Services</h3>
+            <div class="h-1.5 w-32 bg-orange-500 mx-auto mt-4 rounded-full shadow-lg"></div>
+        </section>
+
+        <section class="mb-20 feature-container">
+            <div class="overflow-hidden rounded-[2.5rem] shadow-xl border border-slate-200 bg-white feature-table-3d">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-900 border-b-2 border-slate-200">
+                            <th class="p-8 font-black uppercase tracking-widest text-xs">Features & Services</th>
+                            <th class="p-8 text-center font-black uppercase tracking-widest text-xs border-l header-basic">Basic</th>
+                            <th class="p-8 text-center font-black uppercase tracking-widest text-xs border-l header-standard">Standard</th>
+                            <th class="p-8 text-center font-black uppercase tracking-widest text-xs border-l header-premium">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tss-header">
+                            <td colspan="4" class="p-5 font-black text-sm tracking-widest uppercase italic border-b border-white/10">TSS BENEFITS (<span class="normal-case">Tally Solutions Pvt Ltd</span>)</td>
+                        </tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Release Upgrade</td><td class="text-center border-b font-black text-slate-600 light-basic">✔</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Connected banking & GST</td><td class="text-center border-b font-black text-slate-600 light-basic">✔</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Connected service for e-way bill</td><td class="text-center border-b font-black text-slate-600 light-basic">✔</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Connected service for e-invoice</td><td class="text-center border-b font-black text-slate-600 light-basic">✔</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Connected service for WhatsApp</td><td class="text-center border-b font-black text-slate-600 light-basic">✔</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        
+                        <tr class="support-header">
+                            <td colspan="4" class="p-5 font-black text-sm tracking-widest italic border-b border-white/10 uppercase">Support & Service (<span class="normal-case">Prajapati Computers</span>)</td>
+                        </tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Installation & Updates</td><td class="text-center border-b font-black text-slate-600 light-basic">✔</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Basic Tally Support</td><td class="text-center border-b font-black text-slate-600 light-basic">✔</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Event Invitations</td><td class="text-center border-b text-slate-300 light-basic">✘</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Statutory Compliance Support</td><td class="text-center border-b text-slate-300 light-basic">✘</td><td class="text-center border-b font-black text-blue-600 light-standard">✔</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">E-invoice & E-way Bill Support</td><td class="text-center border-b text-slate-300 light-basic">✘</td><td class="text-center border-b text-slate-300 light-standard">✘</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Customer Visit (within city)</td><td class="text-center border-b text-slate-300 light-basic">✘</td><td class="text-center border-b text-slate-300 light-standard">✘</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Customer Satisfaction Manager</td><td class="text-center border-b text-slate-300 light-basic">✘</td><td class="text-center border-b text-slate-300 light-standard">✘</td><td class="text-center border-b font-black text-orange-600 light-premium">✔</td></tr>
+                        <tr class="feature-row"><td class="p-6 border-b font-black italic">Priority Resolution</td><td class="text-center border-b text-slate-300 light-basic">✘</td><td class="text-center border-b text-slate-300 light-standard">✘</td><td class="text-center border-b font-black text-orange-700 italic text-lg light-premium">✔</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="formSection" class="max-w-5xl mx-auto rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100 transition-all duration-500">
+            <div class="p-10 text-center border-b border-black/5">
+                <h2 class="text-3xl font-black italic uppercase tracking-tighter">Renewal Price</h2>
+                <p class="text-orange-600 text-[10px] font-black uppercase tracking-widest mt-1">Select Edition, Plan & Period</p>
+            </div>
+
+            <form id="renewalForm" class="p-10 lg:p-14 space-y-10">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <select id="flavor" class="p-4 rounded-2xl outline-none border-2 border-black/10 font-bold" onchange="updatePrice()">
+                        <option value="SILVER EDITION (Single User)">SILVER EDITION</option>
+                        <option value="GOLD EDITION (Multi User)">GOLD EDITION</option>
+                    </select>
+                    <select id="plan" class="p-4 rounded-2xl outline-none border-2 border-black/10 font-bold" onchange="updatePrice()">
+                        <option value="BASIC PLAN">BASIC PLAN</option>
+                        <option value="STANDARD PLAN">STANDARD PLAN</option>
+                        <option value="PREMIUM PLAN">PREMIUM PLAN</option>
+                    </select>
+                    <select id="duration" class="p-4 rounded-2xl outline-none border-2 border-black/10 font-bold" onchange="updatePrice()">
+                        <option value="1">1 YEAR RENEWAL</option>
+                        <option value="2">2 YEAR RENEWAL</option>
+                    </select>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10 pt-8 border-t border-black/5">
+                    <input type="text" id="company" placeholder="Company Name" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
+                    <input type="text" id="serial" placeholder="Serial No (Starts with 7)" pattern="7[0-9]{8}" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
+                    <input type="text" id="person" placeholder="Contact Person" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
+                    <input type="tel" id="phone" placeholder="Mobile Number" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
+                </div>
+
+                <div id="priceCard" class="price-card-dark rounded-[3rem] p-12 lg:p-16 flex flex-col lg:flex-row justify-between items-center transition-all duration-500">
+                    <div class="text-center lg:text-left mb-10 lg:mb-0">
+                        <div class="flex items-center justify-center lg:justify-start space-x-4 mb-4">
+                            <span class="text-[10px] font-black bg-white/20 px-4 py-1 rounded-full uppercase tracking-widest border border-white/20">Renewal Price</span>
+                            <span id="savingsTag" class="savings-badge">SAVE ₹0 (0%)</span>
+                        </div>
+                        <div class="text-8xl font-black italic tracking-tighter" id="baseValueDisplay">₹0</div>
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-8 mt-10 opacity-60 text-xs font-black border-t border-white/10 pt-8 uppercase tracking-widest">
+                            <span>Renewal Amount: <span id="renewalAmt" class="text-white">₹0</span></span>
+                            <span>GST (18%): <span id="gstAmount" class="text-white">₹0</span></span>
+                            <span class="text-orange-400">Total Payable: <span id="grandTotalDisplay" class="text-white">₹0</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col space-y-4 w-full lg:w-80">
+                        <p class="text-xs font-black text-center uppercase tracking-[0.3em] mb-2 bg-white/10 py-2 rounded-lg">SHARE VIA</p>
+                        <button type="button" onclick="sendMail('gmail')" class="btn-3d py-4 bg-[#ea4335] text-white rounded-2xl italic"><span class="brand-icon"><i class="fa-brands fa-google"></i></span> GMAIL</button>
+                        <button type="button" onclick="sendMail('yahoo')" class="btn-3d py-4 bg-[#6001d2] text-white rounded-2xl italic"><span class="brand-icon"><i class="fa-brands fa-yahoo"></i></span> YAHOO MAIL</button>
+                        <button type="button" onclick="sendMail('outlook')" class="btn-3d py-4 bg-[#0078d4] text-white rounded-2xl italic"><span class="brand-icon"><i class="fa-brands fa-microsoft"></i></span> OUTLOOK</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-slate-50 border-t-2 border-orange-500 py-12 mt-20 text-center">
+        <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="PC Logo" class="h-10 mx-auto mb-6">
+        <p class="text-slate-400 text-[10px] uppercase font-black tracking-[0.4em]">© 2026 Prajapati Computers | Certified Tally Partner Since 2011</p>
+    </footer>
+
+    <script>
+        const pricing = {
+            "SILVER EDITION (Single User)": { "BASIC PLAN": { 1: 4500, 2: 8100 }, "STANDARD PLAN": { 1: 7500, 2: 14100 }, "PREMIUM PLAN": { 1: 11250, 2: 21600 } },
+            "GOLD EDITION (Multi User)": { "BASIC PLAN": { 1: 13500, 2: 24300 }, "STANDARD PLAN": { 1: 18750, 2: 34800 }, "PREMIUM PLAN": { 1: 25000, 2: 47300 } }
+        };
+
+        function updatePrice() {
+            const f = document.getElementById('flavor').value;
+            const p = document.getElementById('plan').value;
+            const d = document.getElementById('duration').value;
+            const section = document.getElementById('formSection');
+
+            // Form Background Theme
+            if(f.includes("SILVER")) {
+                section.className = "max-w-5xl mx-auto rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-500 theme-silver";
+            } else {
+                section.className = "max-w-5xl mx-auto rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-500 theme-gold";
+            }
+
+            const currentPrice = pricing[f][p][d];
+            const gst = currentPrice * 0.18;
+            const total = currentPrice + gst;
+
+            document.getElementById('baseValueDisplay').innerText = "₹" + currentPrice.toLocaleString('en-IN');
+            document.getElementById('renewalAmt').innerText = "₹" + currentPrice.toLocaleString('en-IN');
+            document.getElementById('gstAmount').innerText = "₹" + gst.toLocaleString('en-IN');
+            document.getElementById('grandTotalDisplay').innerText = "₹" + total.toLocaleString('en-IN');
+
+            const savingsTag = document.getElementById('savingsTag');
+            if (d === "2") {
+                const savings = (pricing[f][p][1] * 2) - currentPrice;
+                const savingsPercent = Math.round((savings / (pricing[f][p][1] * 2)) * 100);
+                savingsTag.innerText = `SAVE ₹${savings.toLocaleString('en-IN')} (${savingsPercent}%)`;
+                savingsTag.style.display = "inline-block";
+            } else { savingsTag.style.display = "none"; }
+        }
+
+        function sendMail(service) {
+            const company = document.getElementById('company').value;
+            const serial = document.getElementById('serial').value;
+            const person = document.getElementById('person').value;
+            const phone = document.getElementById('phone').value;
+            if(!company || !serial || !person || !phone) { alert("Please complete all fields."); return; }
+            
+            const to = "tally.tss@prajapaticomputers.in";
+            const cc = "vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in";
+            const subject = `TSS Renewal | ${serial} | ${company}`;
+            const body = `CLIENT DETAILS:\nCompany: ${company}\nPerson: ${person}\nPhone: ${phone}\nSerial: ${serial}\n\nPLAN: ${document.getElementById('flavor').value}\nSERVICE: ${document.getElementById('plan').value}\nPERIOD: ${document.getElementById('duration').value} Year(s)\n\nRenewal Amount : ${document.getElementById('renewalAmt').innerText}\nGST (18%)      : ${document.getElementById('gstAmount').innerText}\nTotal Payable  : ${document.getElementById('grandTotalDisplay').innerText}`;
+
+            const encodedTo = encodeURIComponent(to);
+            const encodedCc = encodeURIComponent(cc);
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent(body);
+
+            let url = "";
+            if (service === 'gmail') url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedTo}&cc=${encodedCc}&su=${encodedSubject}&body=${encodedBody}`;
+            else if (service === 'yahoo') url = `https://compose.mail.yahoo.com/?to=${encodedTo}&cc=${encodedCc}&subject=${encodedSubject}&body=${encodedBody}`;
+            else if (service === 'outlook') url = `https://outlook.office.com/mail/deeplink/compose?to=${encodedTo}&cc=${encodedCc}&subject=${encodedSubject}&body=${encodedBody}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
