@@ -11,40 +11,58 @@
         
         body { background-color: #ffffff; color: #1e293b; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background 0.5s ease; }
 
-        /* Glossy Animation Logic */
+        /* Enhanced Glossy Animation */
         @keyframes shine { 
             0% { transform: translateX(-150%) rotate(30deg); } 
             50% { transform: translateX(150%) rotate(30deg); }
             100% { transform: translateX(150%) rotate(30deg); }
         }
 
-        .glossy-effect { position: relative; overflow: hidden; }
+        /* INCREASED SIZE FOR HEADERS */
+        .glossy-effect {
+            position: relative;
+            overflow: hidden;
+            font-size: 1.25rem !important; /* Larger Header Titles */
+            font-weight: 900 !important;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
         .glossy-effect::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
-            transform: rotate(30deg); animation: shine 4s infinite;
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: rotate(30deg);
+            animation: shine 4s infinite;
+        }
+
+        /* FEATURE NAME SIZE INCREASE */
+        .feature-name-text {
+            font-size: 1.15rem !important; /* Larger Feature Names */
+            font-weight: 700 !important;
+            color: #1e293b;
         }
 
         /* Feature Matrix Attractions */
         .feature-container { perspective: 1200px; }
         .feature-table-3d { transform: rotateX(1deg); transition: all 0.5s ease; background: #ffffff; }
-        .feature-row { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-bottom: 1px solid #f1f5f9; }
-        .feature-row:hover { transform: scale(1.01) translateZ(20px); z-index: 10; background: #fffaf7; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid var(--prajapati-orange); }
+        .feature-row:hover { transform: scale(1.01) translateZ(20px); z-index: 10; background: #fffaf7; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 6px solid var(--prajapati-orange); }
 
-        /* Glossy Tier Headers */
-        .header-basic { background: linear-gradient(135deg, #64748b 0%, #334155 100%) !important; color: white !important; border-bottom: 3px solid #1e293b !important; }
-        .header-standard { background: linear-gradient(135deg, #149ec2 0%, #0c7a96 100%) !important; color: white !important; border-bottom: 3px solid #085a6f !important; }
-        .header-premium { background: linear-gradient(135deg, #f37021 0%, #c25210 100%) !important; color: white !important; border-bottom: 3px solid #8a3a0b !important; }
+        /* Tier Headers */
+        .header-basic { background: linear-gradient(135deg, #475569 0%, #1e293b 100%) !important; color: white !important; border-bottom: 4px solid #0f172a !important; }
+        .header-standard { background: linear-gradient(135deg, #149ec2 0%, #0b6e88 100%) !important; color: white !important; border-bottom: 4px solid #084d5f !important; }
+        .header-premium { background: linear-gradient(135deg, #f37021 0%, #d35400 100%) !important; color: white !important; border-bottom: 4px solid #a04000 !important; }
 
-        /* Dynamic Theme Gradients for Form */
+        /* Dynamic Theme Gradients */
         .theme-silver { background: linear-gradient(135deg, #e2e8f0 0%, #ffffff 50%, #cbd5e1 100%) !important; border: 1px solid #94a3b8 !important; }
         .theme-gold { background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 50%, #fde68a 100%) !important; border: 1px solid #d97706 !important; }
 
         /* Price Card - Strictly Dark */
         .price-card-dark { background: linear-gradient(145deg, #0f172a, #1e293b) !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important; color: white !important; }
 
-        .tss-header { background-color: var(--brand-dark); color: var(--tally-brand-blue); }
-        .support-header { background-color: var(--brand-dark); color: var(--prajapati-orange); }
+        .tss-header { background-color: var(--brand-dark); color: var(--tally-brand-blue); font-size: 1rem; font-weight: 900; }
+        .support-header { background-color: var(--brand-dark); color: var(--prajapati-orange); font-size: 1rem; font-weight: 900; }
 
         /* 3D Buttons */
         .btn-3d { position: relative; transition: all 0.2s ease; border-bottom: 4px solid rgba(0,0,0,0.4); display: flex; align-items: center; padding-left: 2rem; font-weight: 900; }
@@ -53,7 +71,6 @@
         
         .brand-icon { width: 24px; height: 24px; margin-right: 15px; display: flex; align-items: center; justify-content: center; }
         .savings-badge { background: #10b981; color: white; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 800; display: none; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
     </style>
 </head>
 <body onload="updatePrice()">
@@ -66,7 +83,7 @@
                     <i class="fa-solid fa-phone text-orange-500 mr-1"></i>
                     079 41056650 | 9106593375 | 9723988859 | 81404 88859
                 </p>
-                <p class="text-[10px] font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider mt-1 inline-block border border-blue-100">
+                <p class="text-[11px] font-black text-blue-700 bg-blue-50 px-4 py-1.5 rounded-full uppercase tracking-wider mt-1 inline-block border border-blue-100">
                     Experts Available: 10:00 AM - 7:30 PM
                 </p>
             </div>
@@ -77,7 +94,7 @@
         <section class="mb-16 text-center">
             <h2 class="text-6xl font-black text-slate-900 tracking-tighter uppercase italic mb-2">Tally Prime Renewal</h2>
             <h3 class="text-xl font-bold text-orange-600 uppercase tracking-[0.3em]">Tally Software Services</h3>
-            <div class="h-1 w-24 bg-orange-500 mx-auto mt-4 rounded-full shadow-lg"></div>
+            <div class="h-1.5 w-24 bg-orange-500 mx-auto mt-4 rounded-full shadow-lg"></div>
         </section>
 
         <section class="mb-20 feature-container">
@@ -85,33 +102,33 @@
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr>
-                            <th class="p-8 font-black uppercase tracking-widest text-xs glossy-effect" style="background: #f8fafc;">Features & Services</th>
-                            <th class="p-8 text-center font-black uppercase tracking-widest text-xs border-l header-basic glossy-effect">Basic</th>
-                            <th class="p-8 text-center font-black uppercase tracking-widest text-xs border-l header-standard glossy-effect">Standard</th>
-                            <th class="p-8 text-center font-black uppercase tracking-widest text-xs border-l header-premium glossy-effect">Premium</th>
+                            <th class="p-10 glossy-effect" style="background: #f1f5f9; color: #0f172a;">Features & Services</th>
+                            <th class="p-10 text-center border-l header-basic glossy-effect">Basic</th>
+                            <th class="p-10 text-center border-l header-standard glossy-effect">Standard</th>
+                            <th class="p-10 text-center border-l header-premium glossy-effect">Premium</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="tss-header">
-                            <td colspan="4" class="p-5 font-black text-sm tracking-widest uppercase italic border-b border-white/10">TSS BENEFITS (<span class="normal-case">Tally Solutions Pvt Ltd</span>)</td>
+                            <td colspan="4" class="p-6 font-black tracking-widest uppercase italic border-b border-white/10">TSS BENEFITS (<span class="normal-case">Tally Solutions Pvt Ltd</span>)</td>
                         </tr>
-                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Release Upgrade</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Connected banking & GST</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Connected service for e-way bill</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Connected service for e-invoice</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b font-semibold">Connected service for WhatsApp</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Release Upgrade</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Connected banking & GST</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Connected service for e-way bill</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Connected service for e-invoice</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Connected service for WhatsApp</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
                         
                         <tr class="support-header">
-                            <td colspan="4" class="p-5 font-black text-sm tracking-widest italic border-b border-white/10 uppercase">Support & Service (<span class="normal-case">Prajapati Computers</span>)</td>
+                            <td colspan="4" class="p-6 font-black tracking-widest italic border-b border-white/10 uppercase">Support & Service (<span class="normal-case">Prajapati Computers</span>)</td>
                         </tr>
-                        <tr class="feature-row"><td class="p-6 border-b">Installation & Updates</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b">Basic Tally Support</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b">Event Invitations</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b">Statutory Compliance Support</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b font-black text-[#149ec2]">✔</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b">E-invoice & E-way Bill Support</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b">Customer Visit (within city)</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b">Customer Satisfaction Manager</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b font-black text-[#f37021]">✔</td></tr>
-                        <tr class="feature-row"><td class="p-6 border-b font-black italic">Priority Resolution</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b text-slate-300">✘</td><td class="text-center border-b font-black text-[#f37021] text-lg">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Installation & Updates</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Basic Tally Support</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Event Invitations</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Statutory Compliance Support</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#149ec2] text-xl">✔</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">E-invoice & E-way Bill Support</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Customer Visit (within city)</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b feature-name-text">Customer Satisfaction Manager</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="feature-row"><td class="p-8 border-b font-black italic feature-name-text">Priority Resolution</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b text-slate-300 text-xl">✘</td><td class="text-center border-b font-black text-[#f37021] text-2xl">✔</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -147,7 +164,7 @@
                     <input type="tel" id="phone" placeholder="Mobile Number" required class="p-4 border-b-2 border-black/10 bg-transparent outline-none font-bold text-lg">
                 </div>
 
-                <div id="priceCard" class="price-card-dark rounded-[3rem] p-12 lg:p-16 text-white flex flex-col lg:flex-row justify-between items-center transition-all duration-500">
+                <div id="priceCard" class="price-card-dark rounded-[3rem] p-12 lg:p-16 flex flex-col lg:flex-row justify-between items-center transition-all duration-500">
                     <div class="text-center lg:text-left mb-10 lg:mb-0">
                         <div class="flex items-center justify-center lg:justify-start space-x-4 mb-4">
                             <span class="text-[10px] font-black bg-blue-600 px-4 py-1 rounded-full uppercase tracking-widest border border-white/20">Renewal Price</span>
@@ -156,8 +173,9 @@
                         <div class="text-8xl font-black italic tracking-tighter" id="baseValueDisplay">₹0</div>
                         
                         <div class="flex flex-wrap justify-center lg:justify-start gap-8 mt-10 opacity-60 text-xs font-black border-t border-white/10 pt-8 uppercase tracking-widest">
+                            <span>RENEWAL AMOUNT: <span id="renewalAmt" class="text-white">₹0</span></span>
                             <span>GST (18%): <span id="gstAmount" class="text-white">₹0</span></span>
-                            <span class="text-orange-400">Total Payable: <span id="grandTotalDisplay" class="text-white">₹0</span></span>
+                            <span class="text-orange-400">TOTAL PAYABLE: <span id="grandTotalDisplay" class="text-white">₹0</span></span>
                         </div>
                     </div>
                     
@@ -196,6 +214,7 @@
             const total = currentPrice + gst;
 
             document.getElementById('baseValueDisplay').innerText = "₹" + currentPrice.toLocaleString('en-IN');
+            document.getElementById('renewalAmt').innerText = "₹" + currentPrice.toLocaleString('en-IN');
             document.getElementById('gstAmount').innerText = "₹" + gst.toLocaleString('en-IN');
             document.getElementById('grandTotalDisplay').innerText = "₹" + total.toLocaleString('en-IN');
 
@@ -215,11 +234,7 @@
             const phone = document.getElementById('phone').value;
             if(!company || !serial || !person) { alert("Fill all details."); return; }
             
-            const flavor = document.getElementById('flavor').value;
-            const plan = document.getElementById('plan').value;
-            const duration = document.getElementById('duration').value;
             const subject = `TSS Renewal | ${serial} | ${company}`;
-            
             const body = `𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍
 ---------------------------------------
 𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐍𝐀𝐌𝐄     : ${company}
@@ -229,9 +244,9 @@
 
 𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍
 ---------------------------------------
-𝐋𝐈𝐂𝐄𝐍𝐒𝐄 𝐄𝐃𝐈𝐓𝐈𝐎𝐍  : ${flavor}
-𝐒𝐄𝐑𝐕𝐈𝐂𝐄 𝐏𝐋𝐀𝐍      : ${plan}
-𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐏𝐄𝐑𝐈𝐎𝐃   : ${duration} YEAR(S)
+𝐋𝐈𝐂𝐄𝐍𝐒𝐄 𝐄𝐃𝐈𝐓𝐈𝐎𝐍  : ${document.getElementById('flavor').value}
+𝐒𝐄𝐑𝐕𝐈𝐂𝐄 𝐏𝐋𝐀𝐍      : ${document.getElementById('plan').value}
+𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐏𝐄𝐑𝐈𝐎𝐃   : ${document.getElementById('duration').value} YEAR(S)
 
 𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍
 ---------------------------------------
