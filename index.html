@@ -15,8 +15,31 @@
             height: 100vh; width: 100vw; overflow: hidden; display: flex; flex-direction: column;
         }
 
-        .theme-silver { background: linear-gradient(135deg, #bdc3c7 0%, #ffffff 30%, #e3e7e9 50%, #bdc3c7 100%) !important; border: 1px solid #7f8c8d !important; }
-        .theme-gold { background: linear-gradient(135deg, #d4af37 0%, #fff9e3 30%, #f1d592 50%, #d4af37 100%) !important; border: 1px solid #b8860b !important; }
+        /* Features Box Styling */
+        .features-box {
+            border-radius: 2rem;
+            box-shadow: 0 15px 35px -5px rgba(20, 158, 194, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: white;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        /* Dynamic Shadow Classes for Renewal Box */
+        .theme-silver { 
+            background: linear-gradient(135deg, #bdc3c7 0%, #ffffff 30%, #e3e7e9 50%, #bdc3c7 100%) !important; 
+            border: 1px solid #7f8c8d !important;
+            box-shadow: 0 20px 40px -10px rgba(127, 140, 141, 0.4) !important;
+        }
+        .theme-gold { 
+            background: linear-gradient(135deg, #d4af37 0%, #fff9e3 30%, #f1d592 50%, #d4af37 100%) !important; 
+            border: 1px solid #b8860b !important;
+            box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.5) !important;
+        }
+
+        /* Darker Column Highlighting */
+        .active-col-basic { background-color: rgba(15, 23, 42, 0.08) !important; }
+        .active-col-standard { background-color: rgba(20, 158, 194, 0.1) !important; }
+        .active-col-premium { background-color: rgba(243, 112, 33, 0.1) !important; }
 
         .landscape-grid { 
             display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 2rem; 
@@ -28,7 +51,7 @@
         .header-premium { background: var(--prajapati-orange) !important; color: white !important; font-weight: 900; font-size: 0.85rem; }
 
         .feature-name-text { font-size: 0.85rem !important; font-weight: 700; color: #0f172a; line-height: 1.2; }
-        .tick-mark { font-size: 1.1rem; font-weight: 900; }
+        .tick-mark { font-size: 1.15rem; font-weight: 900; transition: all 0.3s ease; }
         
         .tss-row { background-color: var(--brand-dark); color: var(--tally-brand-blue); font-size: 10px; font-weight: 800; padding: 6px 0; }
         .support-row { background-color: var(--brand-dark); color: var(--prajapati-orange); font-size: 10px; font-weight: 800; padding: 6px 0; }
@@ -63,33 +86,33 @@
 
     <div class="landscape-grid">
         <section class="table-container">
-            <div class="bg-white rounded-[2rem] shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-full">
-                <table class="w-full text-left border-collapse h-full">
+            <div class="features-box flex flex-col h-full">
+                <table class="w-full text-left border-collapse h-full" id="featureTable">
                     <thead>
                         <tr class="bg-slate-50">
                             <th class="p-4 text-slate-900 text-xs font-black uppercase">Features & Services </th>
-                            <th class="p-4 text-center border-l header-basic">BASIC</th>
-                            <th class="p-4 text-center border-l header-standard">STANDARD</th>
-                            <th class="p-4 text-center border-l header-premium">PREMIUM</th>
+                            <th class="p-4 text-center border-l header-basic" data-col="Basic Plan">BASIC</th>
+                            <th class="p-4 text-center border-l header-standard" data-col="Standard Plan">STANDARD</th>
+                            <th class="p-4 text-center border-l header-premium" data-col="Premium Plan">PREMIUM</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="tss-row"><td colspan="4" class="px-8 uppercase italic">TSS BENEFITS (Tally Solutions Pvt Ltd)</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Release Upgrade</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Connected banking & GST</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Connected service for e-way bill</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Connected service for e-invoice</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Browser and Remote Access</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Release Upgrade</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Connected banking & GST</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Connected service for e-way bill</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Connected service for e-invoice</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Browser and Remote Access</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
                         
                         <tr class="support-row"><td colspan="4" class="px-8 uppercase italic">Support & Service (Prajapati Computers)</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Installation & Updates</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Basic Tally Support</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Event Invitations</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Statutory Support</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">E-invoice & E-way Support</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#149ec2]">✔</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Customer Visit (within city)</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Customer Satisfaction Manager</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021]">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text font-black italic text-blue-800">Priority Resolution</td><td class="text-center text-slate-300">✘</td><td class="text-center text-slate-300">✘</td><td class="text-center tick-mark text-[#f37021] text-xl">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Installation & Updates</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Basic Tally Support</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Event Invitations</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Statutory Support</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">E-invoice & E-way Support</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center text-slate-300" data-col="Standard Plan">✘</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Customer Visit (within city)</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center text-slate-300" data-col="Standard Plan">✘</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text">Customer Satisfaction Manager</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center text-slate-300" data-col="Standard Plan">✘</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
+                        <tr class="border-b"><td class="px-8 feature-name-text font-black italic text-blue-800">Priority Resolution</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center text-slate-300" data-col="Standard Plan">✘</td><td class="text-center tick-mark text-[#f37021] text-xl" data-col="Premium Plan">✔</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -119,7 +142,7 @@
                     <div class="grid grid-cols-2 gap-4">
                         <select id="plan" class="select-xl" onchange="updatePrice()">
                             <option value="Basic Plan">Basic Plan</option>
-                            <option value="Standard Plan">Standard Plan</option>
+                            <option value="Standard Plan" selected>Standard Plan</option>
                             <option value="Premium Plan">Premium Plan</option>
                         </select>
                         <select id="duration" class="select-xl" onchange="updatePrice()">
@@ -135,7 +158,7 @@
                             <span class="text-[10px] font-black bg-blue-600 px-3 py-1 rounded uppercase">Renewal Amount</span>
                             <span id="savingsTag" class="bg-green-500 text-white px-3 py-1 rounded text-[11px] font-black hidden animate-bounce">SAVE ₹0</span>
                         </div>
-                        <div class="text-5xl font-black italic tracking-tighter mt-1" id="renewalAmt">₹0</div>
+                        <div class="text-6xl font-black italic tracking-tighter mt-2" id="renewalAmt">₹0</div>
                     </div>
                     
                     <div class="space-y-2 pt-4">
@@ -171,7 +194,19 @@
         function updatePrice() {
             const f = document.getElementById('flavor').value, p = document.getElementById('plan').value, d = document.getElementById('duration').value;
             const section = document.getElementById('formSection');
+            
             section.className = f.includes("Silver") ? "rounded-[2rem] shadow-2xl overflow-hidden transition-all duration-500 theme-silver flex flex-col h-full" : "rounded-[2rem] shadow-2xl overflow-hidden transition-all duration-500 theme-gold flex flex-col h-full";
+            
+            const cells = document.querySelectorAll('#featureTable [data-col]');
+            cells.forEach(cell => {
+                cell.classList.remove('active-col-basic', 'active-col-standard', 'active-col-premium');
+                if (cell.getAttribute('data-col') === p) {
+                    if (p === 'Basic Plan') cell.classList.add('active-col-basic');
+                    if (p === 'Standard Plan') cell.classList.add('active-col-standard');
+                    if (p === 'Premium Plan') cell.classList.add('active-col-premium');
+                }
+            });
+
             const base = pricing[f][p][d], gst = base * 0.18, total = base + gst;
             document.getElementById('renewalAmt').innerText = "₹" + base.toLocaleString('en-IN');
             document.getElementById('gstAmount').innerText = "₹" + gst.toLocaleString('en-IN');
@@ -189,7 +224,6 @@
             const c = document.getElementById('company').value, ps = document.getElementById('person').value, s = document.getElementById('serial').value, ph = document.getElementById('phone').value;
             const sub = `TSS Renewal Order | ${s} | ${c}`;
             
-            // CLEANED MAIL CONTENT WITH HIGH-VISIBILITY TITLES
             const body = `----------------------------------------\n 🏢 𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍\n----------------------------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐀𝐌𝐄: ${ps}\n𝐌𝐎𝐁𝐈𝐋𝐄 𝐍𝐔𝐌𝐁𝐄𝐑: ${ph}\n\n----------------------------------------\n 🛒 𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n----------------------------------------\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${document.getElementById('flavor').value}\n𝐏𝐋𝐀𝐍: ${document.getElementById('plan').value}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${document.getElementById('duration').value}\n\n----------------------------------------\n 💰 𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n----------------------------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ${document.getElementById('renewalAmt').innerText}\n𝐆𝐒𝐓 (𝟏𝟖%): ${document.getElementById('gstAmount').innerText}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${document.getElementById('grandTotalDisplay').innerText}\n----------------------------------------`;
             
             const to = "tally.tss@prajapaticomputers.in", cc = "vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in";
@@ -198,4 +232,4 @@
         }
     </script>
 </body>
-</html>
+</html>	
