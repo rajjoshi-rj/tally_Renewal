@@ -19,14 +19,8 @@
         .theme-gold { background: linear-gradient(135deg, #d4af37 0%, #fff9e3 30%, #f1d592 50%, #d4af37 100%) !important; border: 1px solid #b8860b !important; }
 
         .landscape-grid { 
-            display: grid; 
-            grid-template-columns: 1.3fr 0.7fr; 
-            gap: 2rem; 
-            max-width: 1600px; 
-            margin: 0 auto; 
-            padding: 1.5rem 2rem; 
-            flex-grow: 1; 
-            min-height: 0;
+            display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 2rem; 
+            max-width: 1600px; margin: 0 auto; padding: 1.5rem 2rem; flex-grow: 1; min-height: 0;
         }
 
         .header-basic { background: #1e293b !important; color: white !important; font-weight: 900; font-size: 0.85rem; }
@@ -73,7 +67,7 @@
                 <table class="w-full text-left border-collapse h-full">
                     <thead>
                         <tr class="bg-slate-50">
-                            <th class="p-4 text-slate-900 text-xs font-black uppercase">Service Checklist</th>
+                            <th class="p-4 text-slate-900 text-xs font-black uppercase">Features & Services </th>
                             <th class="p-4 text-center border-l header-basic">BASIC</th>
                             <th class="p-4 text-center border-l header-standard">STANDARD</th>
                             <th class="p-4 text-center border-l header-premium">PREMIUM</th>
@@ -141,10 +135,11 @@
                             <span class="text-[10px] font-black bg-blue-600 px-3 py-1 rounded uppercase">Renewal Amount</span>
                             <span id="savingsTag" class="bg-green-500 text-white px-3 py-1 rounded text-[11px] font-black hidden animate-bounce">SAVE ₹0</span>
                         </div>
-                        <div class="text-6xl font-black italic tracking-tighter mt-2" id="renewalAmt">₹0</div>
+                        <div class="text-5xl font-black italic tracking-tighter mt-1" id="renewalAmt">₹0</div>
                     </div>
                     
-                    <div class="space-y-2 pt-4"> <div class="flex justify-between items-center text-slate-400">
+                    <div class="space-y-2 pt-4">
+                        <div class="flex justify-between items-center text-slate-400">
                             <span class="text-xs font-black uppercase">GST (18%):</span> 
                             <span id="gstAmount" class="text-xl font-bold text-white">₹0</span>
                         </div>
@@ -193,7 +188,10 @@
             if (!form.checkValidity()) { form.reportValidity(); return; }
             const c = document.getElementById('company').value, ps = document.getElementById('person').value, s = document.getElementById('serial').value, ph = document.getElementById('phone').value;
             const sub = `TSS Renewal Order | ${s} | ${c}`;
-            const body = `𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍\n--------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐀𝐌𝐄: ${ps}\n𝐌𝐎𝐁𝐈𝐋𝐄 𝐍𝐔𝐌𝐁𝐄𝐑: ${ph}\n\n𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n--------------------\n\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${document.getElementById('flavor').value}\n𝐏𝐋𝐀𝐍: ${document.getElementById('plan').value}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${document.getElementById('duration').value}\n\n𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n--------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ${document.getElementById('renewalAmt').innerText}\n𝐆𝐒𝐓 (𝟏𝟖%): ${document.getElementById('gstAmount').innerText}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${document.getElementById('grandTotalDisplay').innerText}`;
+            
+            // CLEANED MAIL CONTENT WITH HIGH-VISIBILITY TITLES
+            const body = `----------------------------------------\n 🏢 𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍\n----------------------------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐀𝐌𝐄: ${ps}\n𝐌𝐎𝐁𝐈𝐋𝐄 𝐍𝐔𝐌𝐁𝐄𝐑: ${ph}\n\n----------------------------------------\n 🛒 𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n----------------------------------------\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${document.getElementById('flavor').value}\n𝐏𝐋𝐀𝐍: ${document.getElementById('plan').value}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${document.getElementById('duration').value}\n\n----------------------------------------\n 💰 𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n----------------------------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ${document.getElementById('renewalAmt').innerText}\n𝐆𝐒𝐓 (𝟏𝟖%): ${document.getElementById('gstAmount').innerText}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${document.getElementById('grandTotalDisplay').innerText}\n----------------------------------------`;
+            
             const to = "tally.tss@prajapaticomputers.in", cc = "vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in";
             let url = service === 'gmail' ? `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&su=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}` : service === 'yahoo' ? `https://compose.mail.yahoo.com/?to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}` : `mailto:${to}?cc=${cc}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
             window.open(url, '_blank');
