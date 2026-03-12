@@ -1,235 +1,1103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TallyPrime Renewal Dashboard | Prajapati Computers</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --prajapati-orange: #f37021; --brand-dark: #0f172a; --tally-brand-blue: #149ec2; }
-        
-        body { 
-            background: radial-gradient(circle at top right, #fff5ee 0%, #e0f2f7 50%, #f0f4f8 100%);
-            color: #1e293b; font-family: 'Inter', system-ui, sans-serif; 
-            height: 100vh; width: 100vw; overflow: hidden; display: flex; flex-direction: column;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TallyPrime TSS Renewal | Prajapati Computers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-        /* Features Box Styling */
-        .features-box {
-            border-radius: 2rem;
-            box-shadow: 0 15px 35px -5px rgba(20, 158, 194, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
-            background: white;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-        }
+:root{
+  --blue:#149ec2;--blue-d:#0b7fa0;--blue-l:#e8f8fc;--blue-m:#c0e9f4;
+  --orange:#f37021;--orange-l:#fef4ec;--orange-m:#fddec6;
+  --navy:#07233a;--navy2:#0e3554;
+  --slate:#64748b;--slate-l:#94a3b8;--slate-ll:#cbd5e1;
+  --body:#1e293b;--muted:#64748b;--subtle:#94a3b8;
+  --page:#f1f8fb;--white:#fff;--grey:#f8fafc;
+  --border:#e1eaf0;--border2:#d0dde8;
+  --sh1:0 1px 3px rgba(7,35,58,.07);
+  --sh2:0 4px 18px rgba(7,35,58,.09),0 1px 4px rgba(7,35,58,.05);
+  --sh3:0 8px 32px rgba(7,35,58,.12),0 2px 8px rgba(7,35,58,.06);
+  --r:10px;--r2:14px;--r3:20px;
+}
 
-        /* Dynamic Shadow Classes for Renewal Box */
-        .theme-silver { 
-            background: linear-gradient(135deg, #bdc3c7 0%, #ffffff 30%, #e3e7e9 50%, #bdc3c7 100%) !important; 
-            border: 1px solid #7f8c8d !important;
-            box-shadow: 0 20px 40px -10px rgba(127, 140, 141, 0.4) !important;
-        }
-        .theme-gold { 
-            background: linear-gradient(135deg, #d4af37 0%, #fff9e3 30%, #f1d592 50%, #d4af37 100%) !important; 
-            border: 1px solid #b8860b !important;
-            box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.5) !important;
-        }
+/* ─── BASE ─── */
+html{font-size:14px}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--page);color:var(--body);
+  height:100vh;width:100vw;overflow:hidden;display:flex;flex-direction:column;
+  transition:background .4s ease;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 55% 35% at 95% 0%,rgba(20,158,194,.08) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 0% 100%,rgba(20,158,194,.05) 0%,transparent 55%);
+}
 
-        /* Darker Column Highlighting */
-        .active-col-basic { background-color: rgba(15, 23, 42, 0.08) !important; }
-        .active-col-standard { background-color: rgba(20, 158, 194, 0.1) !important; }
-        .active-col-premium { background-color: rgba(243, 112, 33, 0.1) !important; }
+/* ─── HEADER ─── */
+header{
+  position:relative;z-index:30;
+  background:var(--white);
+  border-bottom:2px solid var(--border);
+  box-shadow:0 2px 12px rgba(7,35,58,.08);
+  flex-shrink:0;
+  min-height:84px;
+  display:flex;align-items:center;
+  padding:0 28px;
+  gap:20px;
+  justify-content:space-between;
+}
 
-        .landscape-grid { 
-            display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 2rem; 
-            max-width: 1600px; margin: 0 auto; padding: 1.5rem 2rem; flex-grow: 1; min-height: 0;
-        }
+/* LOGO */
+.logo-wrap{
+  display:flex;align-items:center;
+  background:#fff;
+  border:1.5px solid var(--border2);
+  border-radius:var(--r);
+  padding:7px 16px 7px 10px;
+  box-shadow:0 1px 6px rgba(7,35,58,.08);
+  flex-shrink:0;
+  gap:10px;
+}
+.logo-wrap img{
+  height:64px;width:auto;
+  display:block;object-fit:contain;
+  background:#fff;
+}
+.logo-text{
+  font-family:'Manrope',sans-serif;
+  font-size:1.15rem;font-weight:800;
+  color:var(--navy);letter-spacing:-.02em;
+  line-height:1.2;
+}
+.logo-text span{color:var(--orange)}
+.logo-text small{display:block;font-size:.68rem;font-weight:600;color:var(--slate);letter-spacing:.05em;text-transform:uppercase}
 
-        .header-basic { background: #1e293b !important; color: white !important; font-weight: 900; font-size: 0.85rem; }
-        .header-standard { background: #149ec2 !important; color: white !important; font-weight: 900; font-size: 0.85rem; }
-        .header-premium { background: var(--prajapati-orange) !important; color: white !important; font-weight: 900; font-size: 0.85rem; }
+/* CENTRE: contact block */
+.h-center{
+  flex:1;
+  display:flex;flex-direction:column;
+  align-items:flex-end;
+  gap:3px;
+}
 
-        .feature-name-text { font-size: 0.85rem !important; font-weight: 700; color: #0f172a; line-height: 1.2; }
-        .tick-mark { font-size: 1.15rem; font-weight: 900; transition: all 0.3s ease; }
-        
-        .tss-row { background-color: var(--brand-dark); color: var(--tally-brand-blue); font-size: 10px; font-weight: 800; padding: 6px 0; }
-        .support-row { background-color: var(--brand-dark); color: var(--prajapati-orange); font-size: 10px; font-weight: 800; padding: 6px 0; }
+/* Row 1 — phone numbers */
+.phone-row{
+  display:flex;align-items:center;gap:10px;
+}
+.ph-icon{
+  width:36px;height:36px;border-radius:9px;
+  background:var(--blue-l);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.ph-icon i{color:var(--blue);font-size:.9rem}
+.ph-nums{display:flex;align-items:center;gap:0;flex-wrap:nowrap}
+.ph-num{
+  font-size:1rem;font-weight:800;color:var(--navy);
+  padding:0 12px;
+  border-right:2px solid var(--border2);
+  line-height:1;
+  letter-spacing:-.01em;
+}
+.ph-num:last-child{border-right:none}
 
-        .price-card-dark { background: #0f172a !important; color: white !important; border-radius: 1.5rem; }
-        .btn-mail { font-size: 0.75rem; font-weight: 900; border-radius: 10px; padding: 12px; transition: all 0.2s; }
-        .btn-mail:hover { transform: translateY(-2px); filter: brightness(1.1); }
+/* Row 2 — hours text */
+.hours-text{
+  font-size:.82rem;font-weight:600;
+  color:var(--muted);
+  display:flex;align-items:center;gap:6px;
+}
+.hours-text i{color:var(--blue);font-size:.75rem}
+.hours-text strong{color:var(--navy);font-weight:800;font-size:.85rem}
 
-        .select-xl { font-size: 16px !important; padding: 12px !important; font-weight: 800 !important; border-radius: 12px !important; width: 100%; cursor: pointer; border: 1px solid #e2e8f0; }
-        .table-container { overflow: hidden; flex-grow: 1; display: flex; flex-direction: column; }
-        
-        @media (max-width: 1024px) { 
-            body { overflow-y: auto; height: auto; }
-            .landscape-grid { grid-template-columns: 1fr; height: auto; max-width: 100%; padding: 1rem; }
-        }
-    </style>
+/* RIGHT: status button */
+.status-btn{
+  flex-shrink:0;
+  display:flex;align-items:center;gap:8px;
+  padding:9px 18px;
+  border-radius:10px;
+  border:none;cursor:default;
+  font-family:'Manrope',sans-serif;
+  font-size:.72rem;font-weight:800;
+  letter-spacing:.02em;
+  white-space:nowrap;
+  transition:background .4s,box-shadow .4s;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+  line-height:1;
+}
+.status-btn .sb-dot{
+  width:9px;height:9px;border-radius:50%;
+  flex-shrink:0;
+  box-shadow:0 0 0 2px rgba(255,255,255,.35);
+}
+.status-btn .sb-lines{display:flex;flex-direction:column;gap:2px}
+.status-btn .sb-main{font-size:.73rem;font-weight:800;line-height:1.2}
+.status-btn .sb-sub {font-size:.6rem;font-weight:600;opacity:.82;line-height:1.2}
+
+/* GREEN — available */
+.sb-green{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff}
+.sb-green .sb-dot{background:#bbf7d0;animation:blink 2s infinite}
+/* YELLOW — arriving / leaving */
+.sb-yellow{background:linear-gradient(135deg,#ca8a04,#a16207);color:#fff}
+.sb-yellow .sb-dot{background:#fef08a;animation:blink 1s infinite}
+/* RED — closed */
+.sb-red{background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff}
+.sb-red .sb-dot{background:#fca5a5}
+
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.55)}}
+
+/* ─── MAIN LAYOUT — 65/35 ─── */
+.wrap{
+  position:relative;z-index:5;
+  flex:1;min-height:0;
+  display:grid;
+  grid-template-columns:65fr 35fr;
+  gap:12px;
+  padding:10px 60px 12px;
+  max-width:1600px;margin:0 auto;width:100%;
+}
+
+/* ─── PANEL ─── */
+.panel{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r2);
+  box-shadow:var(--sh2);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  height:100%;
+}
+
+/* Panel cap bar */
+.panel-cap{
+  padding:8px 18px;
+  background:var(--grey);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+}
+.panel-cap-title{
+  font-family:'Manrope',sans-serif;
+  font-size:.7rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.09em;
+  color:var(--muted);
+  display:flex;align-items:center;gap:7px;
+}
+.cap-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--blue-d));
+  box-shadow:0 0 0 2px var(--blue-l);
+}
+
+/* ─── FEATURE TABLE ─── */
+.tbl-wrap{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+colgroup col.c-feat{width:55%}
+colgroup col.c-plan{width:15%}
+
+/* Head */
+thead th{
+  padding:11px 10px;
+  font-family:'Manrope',sans-serif;
+  font-size:.78rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.08em;
+  border-bottom:2.5px solid var(--border);
+  background:var(--grey);
+  position:sticky;top:0;z-index:2;
+}
+th.th-feat{text-align:left;padding-left:20px;color:var(--muted);font-size:.72rem}
+th.th-basic{text-align:center;color:#475569;border-left:1px solid var(--border)}
+th.th-std{text-align:center;color:var(--blue-d);border-left:1px solid var(--border);background:var(--blue-l)}
+th.th-prem{text-align:center;color:#c05000;border-left:1px solid var(--border);background:var(--orange-l)}
+.th-inner{display:flex;flex-direction:column;align-items:center;gap:3px}
+.th-name{font-size:.78rem;font-weight:800;letter-spacing:.06em}
+.th-badge{
+  font-size:.58rem;font-weight:700;
+  padding:2px 8px;border-radius:100px;
+  letter-spacing:.04em;text-transform:uppercase;
+}
+.badge-basic{background:#e2e8f0;color:#475569}
+.badge-std  {background:var(--blue-m);color:var(--blue-d)}
+.badge-prem {background:var(--orange-m);color:#b84500}
+
+/* Section dividers */
+tr.sec-hdr td{
+  padding:5px 20px;
+  font-size:.65rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+tr.sec-tss {background:linear-gradient(90deg,var(--blue-l),rgba(20,158,194,.02))}
+tr.sec-tss td{color:var(--blue-d)}
+tr.sec-supp{background:linear-gradient(90deg,var(--orange-l),rgba(243,112,33,.02))}
+tr.sec-supp td{color:#c05000}
+
+/* Feature rows */
+tr.frow{border-bottom:1px solid #edf2f7;transition:background .12s}
+tr.frow:hover{background:#f6fbfd}
+tr.frow td.td-name{
+  padding:8px 20px;
+  font-size:1rem;font-weight:500;
+  color:var(--body);line-height:1.3;
+  transition:background .25s;
+}
+tr.frow.priority td.td-name{
+  color:var(--blue-d);font-weight:700;font-style:italic;
+}
+
+/* Feature name highlights — background matches tick chip, text always black */
+tr.frow td.td-name.hl-b{
+  background:#f1f5f9;
+  color:var(--body);font-weight:600;
+}
+tr.frow td.td-name.hl-s{
+  background:var(--blue-l);
+  color:var(--body);font-weight:600;
+}
+tr.frow td.td-name.hl-p{
+  background:var(--orange-l);
+  color:var(--body);font-weight:600;
+}
+
+tr.frow td.td-val{
+  text-align:center;vertical-align:middle;
+  border-left:1px solid #edf2f7;
+  padding:6px 0;
+}
+
+/* ── TICK CHIP ── */
+.ck{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:7px;
+  font-size:.82rem;font-weight:900;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.ck-b {background:#e2e8f0;color:#475569}
+.ck-s {background:var(--blue-l);color:var(--blue-d)}
+.ck-p {background:var(--orange-l);color:#c05000}
+.ck-no{background:#f1f5f9;color:#c8d0db;font-size:.72rem}
+
+.ck.ck-selected{
+  transform:scale(1.45);
+  box-shadow:0 2px 10px rgba(0,0,0,.18);
+  position:relative;z-index:5;
+}
+/* POP animation — only the tick bounces */
+@keyframes tick-pop{
+  0%  {transform:scale(1)}
+  30% {transform:scale(1.8) rotate(-8deg)}
+  55% {transform:scale(1.5) rotate(5deg)}
+  75% {transform:scale(1.65) rotate(-3deg)}
+  90% {transform:scale(1.55) rotate(1deg)}
+  100%{transform:scale(1.5)}
+}
+.ck.popped{
+  animation:tick-pop .45s cubic-bezier(.36,.07,.19,.97) forwards;
+  transform:scale(1.5);
+  box-shadow:0 3px 12px rgba(0,0,0,.2);
+  z-index:10;position:relative;
+}
+
+/* ─── RIGHT PANEL ─── */
+.form-panel{
+  display:flex;flex-direction:column;
+  height:100%;
+  border-radius:var(--r2);
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--sh2);
+  background:var(--white);
+  transition:border-top-color .4s;
+}
+.form-panel.ed-silver{border-top:3px solid #94a3b8}
+.form-panel.ed-gold  {border-top:3px solid #d4af37}
+
+/* Form header */
+.fh{
+  background:var(--grey);
+  border-bottom:1px solid var(--border);
+  padding:9px 14px;
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.fh-left .ft{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;color:var(--navy)}
+.fh-left .fs{font-size:.6rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-top:1px}
+.ed-chip{
+  font-size:.6rem;font-weight:800;
+  padding:4px 10px;border-radius:100px;
+  letter-spacing:.06em;text-transform:uppercase;
+  flex-shrink:0;transition:all .35s;
+}
+.ec-silver{background:linear-gradient(135deg,#f0f4f8,#e8eef5);color:#4a5568;border:1px solid #d6dfe8}
+.ec-gold  {background:linear-gradient(135deg,#fffbeb,#fef3c7);color:#92400e;border:1px solid #fde68a}
+
+/* Plan toast */
+.plan-msg{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;
+  border-radius:8px;
+  flex-shrink:0;
+  opacity:0;transform:translateY(-4px);
+  transition:opacity .3s,transform .3s;
+  border:1px solid transparent;
+}
+.plan-msg.visible{opacity:1;transform:translateY(0)}
+.plan-msg.pm-basic   {background:#f1f5f9;border-color:var(--slate-ll);color:#334155}
+.plan-msg.pm-standard{background:var(--blue-l);border-color:var(--blue-m);color:var(--blue-d)}
+.plan-msg.pm-premium {background:var(--orange-l);border-color:var(--orange-m);color:#b84500}
+.pm-ico{font-size:1rem;flex-shrink:0}
+.pm-txt{line-height:1.3}
+.pm-txt strong{display:block;font-size:.8rem;font-weight:800}
+.pm-txt span{font-size:.7rem;font-weight:500;opacity:.85}
+
+/* Form body — fill all available height */
+.fbody{
+  flex:1;min-height:0;overflow:hidden;
+  padding:10px 14px 12px;
+  display:flex;flex-direction:column;gap:7px;
+}
+
+/* Fields — taller, larger font */
+.fg{position:relative;display:flex;flex-direction:column}
+.fg .fi{
+  position:absolute;left:13px;top:50%;transform:translateY(-50%);
+  color:var(--blue);font-size:.85rem;pointer-events:none;z-index:1;
+}
+.inp{
+  width:100%;
+  background:var(--white);
+  border:1.5px solid var(--border2);
+  border-radius:9px;
+  padding:11px 13px 11px 38px;
+  font-family:'Manrope',sans-serif;
+  font-size:.96rem;font-weight:600;
+  color:var(--navy);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  letter-spacing:-.01em;
+}
+.inp::placeholder{color:var(--subtle);font-weight:400;font-size:.88rem}
+.inp:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(20,158,194,.12);background:#fafeff}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex-shrink:0}
+
+/* Selects */
+.lbl{
+  font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;
+  color:var(--muted);margin-bottom:3px;display:block;
+}
+.sw{position:relative}
+.sw::after{
+  content:'\f078';font-family:'Font Awesome 6 Free';font-weight:900;
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  color:var(--blue);font-size:.6rem;pointer-events:none;
+}
+.sel{
+  width:100%;appearance:none;
+  background:var(--white);border:1.5px solid var(--border2);
+  border-radius:9px;padding:11px 30px 11px 13px;
+  font-family:'Manrope',sans-serif;
+  font-size:.96rem;font-weight:700;
+  color:var(--navy);cursor:pointer;outline:none;
+  transition:border-color .2s,box-shadow .2s,background .3s;
+  letter-spacing:-.01em;
+}
+.sel:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(20,158,194,.12)}
+.sel.fl-silver{background:linear-gradient(135deg,#f0f4f8,#e8eef5);border-color:#d6dfe8}
+.sel.fl-gold  {background:linear-gradient(135deg,#fffbeb,#fef3c7);border-color:#fde68a}
+.g2s{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex-shrink:0}
+
+/* ── PRICE BLOCK — fills remaining space ── */
+.price-send-row{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  flex:1;
+  min-height:0;
+}
+
+/* ── PRICE CARD ── */
+.price-block{
+  background:var(--navy);border-radius:12px;
+  padding:12px 16px;
+  position:relative;overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr auto;
+  grid-template-rows:auto auto auto;
+  gap:6px 14px;
+  align-items:center;
+  flex:1;
+  min-height:0;
+}
+.price-block::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--orange));
+}
+.price-block::after{
+  content:'';position:absolute;bottom:-20px;right:-20px;
+  width:90px;height:90px;border-radius:50%;
+  background:rgba(20,158,194,.07);pointer-events:none;
+}
+.pb-top{
+  grid-column:1/-1;
+  display:flex;align-items:center;justify-content:space-between;gap:6px;
+}
+.pb-lbl{
+  font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:rgba(255,255,255,.4);
+  background:rgba(255,255,255,.08);
+  padding:2px 8px;border-radius:4px;
+  border:1px solid rgba(255,255,255,.1);
+  white-space:nowrap;
+}
+.save-chip{
+  display:none;
+  background:linear-gradient(135deg,#16a34a,#15803d);
+  color:#fff;font-size:.6rem;font-weight:800;
+  padding:2px 9px;border-radius:100px;letter-spacing:.04em;text-transform:uppercase;
+  white-space:nowrap;
+}
+.pb-amt{display:flex;align-items:baseline;gap:2px;grid-column:1}
+.pb-sym{font-size:1rem;font-weight:600;color:rgba(255,255,255,.45);margin-right:1px}
+#renewalAmt{
+  font-family:'Manrope',sans-serif;
+  font-size:2rem;font-weight:800;
+  color:#fff;letter-spacing:-.03em;line-height:1;
+}
+.pb-div{display:none}
+.pb-rows{grid-column:2;grid-row:2;text-align:right}
+.pb-row{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.pb-rl{font-size:.72rem;font-weight:500;color:rgba(255,255,255,.45)}
+.pb-rv{font-size:.86rem;font-weight:700;color:rgba(255,255,255,.8)}
+.pb-total{
+  grid-column:1/-1;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(20,158,194,.18);
+  border:1px solid rgba(20,158,194,.35);
+  border-radius:7px;padding:8px 12px;
+}
+.pb-tl{
+  font-family:'Manrope',sans-serif;
+  font-size:.63rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--blue);
+}
+#grandTotalDisplay{
+  font-family:'Manrope',sans-serif;
+  font-size:1.4rem;font-weight:800;color:#fff;letter-spacing:-.02em;
+}
+
+/* ── SEND BUTTONS — full width, 3 across ── */
+.send-sec{
+  display:flex;flex-direction:column;gap:0;flex-shrink:0;
+}
+.send-lbl{
+  font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);text-align:center;
+  padding:0 0 5px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:6px;
+}
+.send-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:7px;
+}
+.sbtn{
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:row;
+  gap:7px;
+  padding:10px 8px;
+  border:none;border-radius:9px;
+  font-family:'Manrope',sans-serif;
+  cursor:pointer;
+  transition:filter .15s,transform .15s,box-shadow .15s;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+.sbtn:hover{filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.sbtn:active{transform:translateY(0)}
+.sbtn i{font-size:1rem;flex-shrink:0}
+.sbtn span{font-size:.76rem;font-weight:700;letter-spacing:.01em;line-height:1;white-space:nowrap}
+.sg{background:#ea4335;color:#fff}
+.sy{background:#6001d2;color:#fff}
+.so{background:#0078d4;color:#fff}
+
+/* ── SERIAL VALIDATION ── */
+.inp.inp-error{border-color:#ef4444!important;box-shadow:0 0 0 3px rgba(239,68,68,.12)!important;background:#fff8f8!important}
+.serial-err{
+  font-size:.7rem;font-weight:600;color:#dc2626;
+  margin-top:3px;padding:2px 4px;
+  display:none;
+}
+.serial-err.show{display:block}
+#cc{position:fixed;inset:0;pointer-events:none;z-index:9999;display:none}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
+</style>
 </head>
-<body onload="updatePrice()">
+<body onload="init()">
+<canvas id="cc"></canvas>
 
-    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 py-3 px-8 shadow-sm">
-        <div class="max-w-[1600px] mx-auto flex justify-between items-center">
-            <img src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png" alt="Logo" class="h-16 w-auto">
-            <div class="text-right">
-                <p class="font-black text-slate-800 text-base md:text-sm">
-                    <i class="fa-solid fa-phone-volume text-orange-500 mr-2"></i>
-                    079 4105 6650 | 91065 93375 | 97239 88859 | 81404 88859
-                </p>
-                <p class="text-[14px] font-black text-blue-700 bg-blue-50 px-5 py-1.5 rounded-full uppercase inline-block border-2 border-blue-200 mt-1">Experts Available: 10:30 AM - 7:30 PM</p>
-            </div>
-        </div>
-    </header>
+<!-- ════════ HEADER ════════ -->
+<header>
+  <!-- LOGO -->
+  <div class="logo-wrap">
+    <img id="logoImg"
+      src="https://prajapaticomputers.com/wp-content/uploads/2024/03/prajapati-computers-logo.png"
+      alt="Prajapati Computers"
+      onerror="handleLogoErr()">
+    <div class="logo-text" id="logoTxt" style="display:none">
+      Prajapati <span>Computers</span>
+      <small>Authorized Tally Partner</small>
+    </div>
+  </div>
 
-    <div class="landscape-grid">
-        <section class="table-container">
-            <div class="features-box flex flex-col h-full">
-                <table class="w-full text-left border-collapse h-full" id="featureTable">
-                    <thead>
-                        <tr class="bg-slate-50">
-                            <th class="p-4 text-slate-900 text-xs font-black uppercase">Features & Services </th>
-                            <th class="p-4 text-center border-l header-basic" data-col="Basic Plan">BASIC</th>
-                            <th class="p-4 text-center border-l header-standard" data-col="Standard Plan">STANDARD</th>
-                            <th class="p-4 text-center border-l header-premium" data-col="Premium Plan">PREMIUM</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="tss-row"><td colspan="4" class="px-8 uppercase italic">TSS BENEFITS (Tally Solutions Pvt Ltd)</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Release Upgrade</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Connected banking & GST</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Connected service for e-way bill</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Connected service for e-invoice</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Browser and Remote Access</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        
-                        <tr class="support-row"><td colspan="4" class="px-8 uppercase italic">Support & Service (Prajapati Computers)</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Installation & Updates</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Basic Tally Support</td><td class="text-center tick-mark text-[#1e293b]" data-col="Basic Plan">✔</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Event Invitations</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Statutory Support</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center tick-mark text-[#149ec2]" data-col="Standard Plan">✔</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">E-invoice & E-way Support</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center text-slate-300" data-col="Standard Plan">✘</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Customer Visit (within city)</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center text-slate-300" data-col="Standard Plan">✘</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text">Customer Satisfaction Manager</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center text-slate-300" data-col="Standard Plan">✘</td><td class="text-center tick-mark text-[#f37021]" data-col="Premium Plan">✔</td></tr>
-                        <tr class="border-b"><td class="px-8 feature-name-text font-black italic text-blue-800">Priority Resolution</td><td class="text-center text-slate-300" data-col="Basic Plan">✘</td><td class="text-center text-slate-300" data-col="Standard Plan">✘</td><td class="text-center tick-mark text-[#f37021] text-xl" data-col="Premium Plan">✔</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+  <!-- CENTRE: phone + hours stacked -->
+  <div class="h-center">
+    <!-- Row 1: phone numbers -->
+    <div class="phone-row">
+      <div class="ph-icon"><i class="fa-solid fa-phone-volume"></i></div>
+      <div class="ph-nums">
+        <span class="ph-num">079 4105 6650</span>
+        <span class="ph-num">91065 93375</span>
+        <span class="ph-num">97239 88859</span>
+        <span class="ph-num">81404 88859</span>
+      </div>
+    </div>
+    <!-- Row 2: hours line -->
+    <div class="hours-text">
+      <i class="fa-regular fa-clock"></i>
+      Expert Available &nbsp;<strong>10:30 AM to 07:30 PM</strong>&nbsp; · Mon – Sat
+    </div>
+  </div>
 
-        <section id="formSection" class="rounded-[2rem] shadow-2xl overflow-hidden flex flex-col h-full bg-white border border-slate-200 transition-all duration-500">
-            <div class="py-4 text-center border-b border-black/5 bg-white/30">
-                <h2 class="text-2xl font-black italic uppercase">Renewal Details</h2>
-                <p class="text-orange-600 text-[11px] font-black uppercase">Select Edition, Plan & Period</p>
-            </div>
+  <!-- RIGHT: live status button -->
+  <div class="status-btn sb-green" id="expPill">
+    <span class="sb-dot"></span>
+    <span class="sb-lines">
+      <span class="sb-main" id="epMain">Experts Available</span>
+      <span class="sb-sub"  id="epSub">Now Online</span>
+    </span>
+  </div>
+</header>
 
-            <form id="renewalForm" class="p-6 flex flex-col h-full justify-between min-h-0">
-                <div class="space-y-3">
-                    <input type="text" id="company" placeholder="Company Name" required class="w-full p-3 border-b-2 border-slate-200 outline-none font-bold text-base focus:border-blue-500 transition-colors bg-transparent">
-                    <input type="text" id="serial" placeholder="Tally License Number" required pattern="7[0-9]{8}" maxlength="9" class="w-full p-3 border-b-2 border-slate-200 outline-none font-bold text-base focus:border-blue-500 transition-colors bg-transparent">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" id="person" placeholder="Contact Name" required class="p-3 border-b-2 border-slate-200 outline-none font-bold text-base focus:border-blue-500 transition-colors bg-transparent">
-                        <input type="tel" id="phone" placeholder="Mobile Number" required class="p-3 border-b-2 border-slate-200 outline-none font-bold text-base focus:border-blue-500 transition-colors bg-transparent">
-                    </div>
-                </div>
+<!-- ════════ BODY ════════ -->
+<div class="wrap">
 
-                <div class="space-y-4 mt-4">
-                    <select id="flavor" class="select-xl" onchange="updatePrice()">
-                        <option value="Silver (Single User)">Silver Edition (Single User)</option>
-                        <option value="Gold (MultiUser)">Gold Edition (Multi User)</option>
-                    </select>
-                    <div class="grid grid-cols-2 gap-4">
-                        <select id="plan" class="select-xl" onchange="updatePrice()">
-                            <option value="Basic Plan">Basic Plan</option>
-                            <option value="Standard Plan" selected>Standard Plan</option>
-                            <option value="Premium Plan">Premium Plan</option>
-                        </select>
-                        <select id="duration" class="select-xl" onchange="updatePrice()">
-                            <option value="1 Year">1 Year</option>
-                            <option value="2 Year">2 Year</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div id="priceCard" class="price-card-dark p-6 mt-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-[10px] font-black bg-blue-600 px-3 py-1 rounded uppercase">Renewal Amount</span>
-                            <span id="savingsTag" class="bg-green-500 text-white px-3 py-1 rounded text-[11px] font-black hidden animate-bounce">SAVE ₹0</span>
-                        </div>
-                        <div class="text-6xl font-black italic tracking-tighter mt-2" id="renewalAmt">₹0</div>
-                    </div>
-                    
-                    <div class="space-y-2 pt-4">
-                        <div class="flex justify-between items-center text-slate-400">
-                            <span class="text-xs font-black uppercase">GST (18%):</span> 
-                            <span id="gstAmount" class="text-xl font-bold text-white">₹0</span>
-                        </div>
-                        <div class="flex justify-between items-center text-orange-400">
-                            <span class="text-xs font-black uppercase tracking-widest">Net Payable:</span> 
-                            <span id="grandTotalDisplay" class="text-4xl font-black text-white">₹0</span>
-                        </div>
-                    </div>
-                    
-                    <div class="text-center pt-4">
-                        <p class="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-3">SEND ORDER VIA</p>
-                        <div class="grid grid-cols-3 gap-3">
-                            <button type="button" onclick="sendMail('gmail')" class="btn-mail bg-[#ea4335] text-white">GMAIL</button>
-                            <button type="button" onclick="sendMail('yahoo')" class="btn-mail bg-[#6001d2] text-white">YAHOO</button>
-                            <button type="button" onclick="sendMail('outlook')" class="btn-mail bg-[#0078d4] text-white">OUTLOOK</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </section>
+  <!-- LEFT: FEATURES TABLE -->
+  <div class="panel">
+    <div class="panel-cap">
+      <div class="panel-cap-title">
+        <span class="cap-dot"></span>
+        TallyPrime TSS — Features &amp; Services Comparison
+      </div>
     </div>
 
-    <script>
-        const pricing = {
-            "Silver (Single User)": { "Basic Plan": { "1 Year": 4500, "2 Year": 8100 }, "Standard Plan": { "1 Year": 7500, "2 Year": 14100 }, "Premium Plan": { "1 Year": 11250, "2 Year": 21600 } },
-            "Gold (MultiUser)": { "Basic Plan": { "1 Year": 13500, "2 Year": 24300 }, "Standard Plan": { "1 Year": 18750, "2 Year": 34800 }, "Premium Plan": { "1 Year": 25000, "2 Year": 47300 } }
-        };
+    <div class="tbl-wrap">
+      <table>
+        <colgroup>
+          <col class="c-feat">
+          <col class="c-plan">
+          <col class="c-plan">
+          <col class="c-plan">
+        </colgroup>
+        <thead>
+          <tr>
+            <th class="th-feat">Feature / Service</th>
+            <th class="th-basic">
+              <div class="th-inner">
+                <span class="th-name">Basic</span>
+              </div>
+            </th>
+            <th class="th-std">
+              <div class="th-inner">
+                <span class="th-name">Standard</span>
+              </div>
+            </th>
+            <th class="th-prem">
+              <div class="th-inner">
+                <span class="th-name">Premium</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TSS -->
+          <tr class="sec-hdr sec-tss">
+            <td colspan="4"><i class="fa-solid fa-circle-check" style="margin-right:5px;font-size:.6rem"></i>TSS Benefits — Tally Solutions Pvt Ltd</td>
+          </tr>
+          <tr class="frow" data-p="1,2,3">
+            <td class="td-name">Release Upgrade</td>
+            <td class="td-val bv"><span class="ck ck-b">✔</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="1,2,3">
+            <td class="td-name">Connected Banking &amp; GST</td>
+            <td class="td-val bv"><span class="ck ck-b">✔</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="1,2,3">
+            <td class="td-name">Connected Service for E-Way Bill</td>
+            <td class="td-val bv"><span class="ck ck-b">✔</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="1,2,3">
+            <td class="td-name">Connected Service for E-Invoice</td>
+            <td class="td-val bv"><span class="ck ck-b">✔</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="1,2,3">
+            <td class="td-name">Browser and Remote Access</td>
+            <td class="td-val bv"><span class="ck ck-b">✔</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
 
-        function updatePrice() {
-            const f = document.getElementById('flavor').value, p = document.getElementById('plan').value, d = document.getElementById('duration').value;
-            const section = document.getElementById('formSection');
-            
-            section.className = f.includes("Silver") ? "rounded-[2rem] shadow-2xl overflow-hidden transition-all duration-500 theme-silver flex flex-col h-full" : "rounded-[2rem] shadow-2xl overflow-hidden transition-all duration-500 theme-gold flex flex-col h-full";
-            
-            const cells = document.querySelectorAll('#featureTable [data-col]');
-            cells.forEach(cell => {
-                cell.classList.remove('active-col-basic', 'active-col-standard', 'active-col-premium');
-                if (cell.getAttribute('data-col') === p) {
-                    if (p === 'Basic Plan') cell.classList.add('active-col-basic');
-                    if (p === 'Standard Plan') cell.classList.add('active-col-standard');
-                    if (p === 'Premium Plan') cell.classList.add('active-col-premium');
-                }
-            });
+          <!-- SUPPORT -->
+          <tr class="sec-hdr sec-supp">
+            <td colspan="4"><i class="fa-solid fa-headset" style="margin-right:5px;font-size:.6rem"></i>Support &amp; Service — Prajapati Computers</td>
+          </tr>
+          <tr class="frow" data-p="1,2,3">
+            <td class="td-name">Installation &amp; Updates</td>
+            <td class="td-val bv"><span class="ck ck-b">✔</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="1,2,3">
+            <td class="td-name">Basic Tally Support</td>
+            <td class="td-val bv"><span class="ck ck-b">✔</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="2,3">
+            <td class="td-name">Event Invitations</td>
+            <td class="td-val bv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="2,3">
+            <td class="td-name">Statutory Support</td>
+            <td class="td-val bv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="2,3">
+            <td class="td-name">E-Invoice &amp; E-Way Support</td>
+            <td class="td-val bv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val sv"><span class="ck ck-s">✔</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="3">
+            <td class="td-name">Customer Visit (within city)</td>
+            <td class="td-val bv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val sv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow" data-p="3">
+            <td class="td-name">Customer Satisfaction Manager</td>
+            <td class="td-val bv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val sv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+          <tr class="frow priority" data-p="3">
+            <td class="td-name">Priority Resolution</td>
+            <td class="td-val bv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val sv"><span class="ck ck-no">✘</span></td>
+            <td class="td-val pv"><span class="ck ck-p">✔</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-            const base = pricing[f][p][d], gst = base * 0.18, total = base + gst;
-            document.getElementById('renewalAmt').innerText = "₹" + base.toLocaleString('en-IN');
-            document.getElementById('gstAmount').innerText = "₹" + gst.toLocaleString('en-IN');
-            document.getElementById('grandTotalDisplay').innerText = "₹" + total.toLocaleString('en-IN');
-            const tag = document.getElementById('savingsTag');
-            if (d === "2 Year") {
-                const save = (pricing[f][p]["1 Year"] * 2) - base;
-                tag.innerText = `SAVE ₹${save.toLocaleString('en-IN')}`; tag.style.display = "block";
-            } else { tag.style.display = "none"; }
+  <!-- RIGHT: RENEWAL FORM -->
+  <div class="form-panel ed-silver" id="fPanel">
+
+    <div class="fh">
+      <div class="fh-left">
+        <div class="ft">Renewal Details</div>
+        <div class="fs">Edition · Plan · Duration</div>
+      </div>
+      <div class="ed-chip ec-silver" id="edChip">Silver · Single</div>
+    </div>
+
+    <!-- Plan message — removed from here, now lives inside fbody -->
+
+    <div class="fbody">
+
+      <!-- Info fields -->
+      <div class="fg">
+        <i class="fa-solid fa-building fi"></i>
+        <input type="text" id="company" class="inp" placeholder="Company Name" required>
+      </div>
+      <div class="fg">
+        <i class="fa-solid fa-barcode fi"></i>
+        <input type="text" id="serial" class="inp" placeholder="Tally License Number" required oninput="validateSerial(this)" onblur="blurSerial(this)" inputmode="numeric">
+        <span class="serial-err" id="serialErr">⚠ Invalid License Number — Please Check</span>
+      </div>
+      <div class="g2">
+        <div class="fg">
+          <i class="fa-solid fa-user fi"></i>
+          <input type="text" id="person" class="inp" placeholder="Contact Name" required>
+        </div>
+        <div class="fg">
+          <i class="fa-solid fa-mobile-screen fi"></i>
+          <input type="tel" id="phone" class="inp" placeholder="Mobile Number" required>
+        </div>
+      </div>
+
+      <!-- Edition -->
+      <div>
+        <div class="lbl">Edition</div>
+        <div class="sw">
+          <select id="flavor" class="sel" onchange="updatePrice()">
+            <option value="Silver (Single User)">Silver Edition (Single User)</option>
+            <option value="Gold (MultiUser)">Gold Edition (Multi User)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Plan + Duration -->
+      <div class="g2s">
+        <div>
+          <div class="lbl">Plan</div>
+          <div class="sw">
+            <select id="plan" class="sel" onchange="updatePrice()">
+              <option value="Basic Plan">Basic Plan</option>
+              <option value="Standard Plan">Standard Plan</option>
+              <option value="Premium Plan">Premium Plan</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="lbl">Duration</div>
+          <div class="sw">
+            <select id="duration" class="sel" onchange="updatePrice()">
+              <option value="1 Year">1 Year</option>
+              <option value="2 Year">2 Year</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan message — AFTER plan+duration, BEFORE price -->
+      <div class="plan-msg pm-basic" id="planMsg">
+        <span class="pm-ico">💼</span>
+        <span class="pm-txt">
+          <strong id="pmTitle">Basic Plan Selected</strong>
+          <span id="pmDesc">Core TSS benefits. Great for getting started.</span>
+        </span>
+      </div>
+
+      <!-- Price block -->
+      <div class="price-send-row">
+        <div class="price-block">
+          <div class="pb-top">
+            <span class="pb-lbl">Renewal Amount</span>
+            <span class="save-chip" id="savChip">SAVE ₹0</span>
+          </div>
+          <div class="pb-amt">
+            <span class="pb-sym">₹</span>
+            <span id="renewalAmt">0</span>
+          </div>
+          <hr class="pb-div">
+          <div class="pb-rows">
+            <div class="pb-row">
+              <span class="pb-rl">GST (18%)</span>
+              <span class="pb-rv" id="gstAmt">₹0</span>
+            </div>
+          </div>
+          <div class="pb-total">
+            <span class="pb-tl">Net Payable</span>
+            <span id="grandTotalDisplay">₹0</span>
+          </div>
+        </div>
+
+        <!-- Send buttons — below price, full width 3-across -->
+        <div class="send-sec">
+          <div class="send-lbl">Place Order Via</div>
+          <div class="send-grid">
+            <button class="sbtn sg" onclick="sendMail('gmail')"><i class="fa-brands fa-google"></i><span>Gmail</span></button>
+            <button class="sbtn sy" onclick="sendMail('yahoo')"><i class="fa-brands fa-yahoo"></i><span>Yahoo</span></button>
+            <button class="sbtn so" onclick="sendMail('outlook')"><i class="fa-brands fa-microsoft"></i><span>Outlook</span></button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /fbody -->
+  </div><!-- /form-panel -->
+</div><!-- /wrap -->
+
+<script>
+/* ══ PRICING ══ */
+const PR = {
+  "Silver (Single User)":{
+    "Basic Plan":   {"1 Year":4500,  "2 Year":8100},
+    "Standard Plan":{"1 Year":7500,  "2 Year":14100},
+    "Premium Plan": {"1 Year":11250, "2 Year":21600}
+  },
+  "Gold (MultiUser)":{
+    "Basic Plan":   {"1 Year":13500, "2 Year":24300},
+    "Standard Plan":{"1 Year":18750, "2 Year":34800},
+    "Premium Plan": {"1 Year":25000, "2 Year":47300}
+  }
+};
+
+/* ══ LOGO FALLBACK ══ */
+function handleLogoErr(){
+  document.getElementById('logoImg').style.display='none';
+  document.getElementById('logoTxt').style.display='block';
+}
+
+/* ══ EXPERT STATUS CLOCK ══ */
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const STATUSES=[
+  // Before 09:30 AM → Red
+  {from:0,        to:9*60+30,  cls:'sb-red',    main:'Experts Unavailable',        sub:null, subFn:(t,d)=>`${d} · Opens at 10:30 AM`},
+  // 09:30 AM – 10:00 AM → Yellow
+  {from:9*60+30,  to:10*60,    cls:'sb-yellow',  main:'Experts Available Soon',     sub:null, subFn:(t,d)=>`${d} ${t} · Arriving by 10:30 AM`},
+  // 10:00 AM – 10:30 AM → Yellow
+  {from:10*60,    to:10*60+30, cls:'sb-yellow',  main:'Experts Almost Available',   sub:null, subFn:(t,d)=>`${d} ${t} · Online by 10:30 AM`},
+  // 10:30 AM – 7:00 PM → Green (show live time + day)
+  {from:10*60+30, to:19*60,    cls:'sb-green',   main:'Experts Available',          sub:null, subFn:(t,d)=>`${d} · ${t}`},
+  // 7:00 PM – 7:30 PM → Yellow
+  {from:19*60,    to:19*60+30, cls:'sb-yellow',  main:'Experts Leaving Soon',       sub:null, subFn:(t,d)=>`${d} ${t} · Closes at 7:30 PM`},
+  // After 7:30 PM → Red
+  {from:19*60+30, to:24*60,    cls:'sb-red',     main:'Experts Unavailable',        sub:null, subFn:(t,d)=>`${d} · Closed · Opens 10:30 AM`},
+];
+function tickClock(){
+  const n   = new Date();
+  const m   = n.getHours()*60 + n.getMinutes();
+  const day = DAYS[n.getDay()];
+  const time= n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true}).toUpperCase();
+  const s   = STATUSES.find(x=>m>=x.from&&m<x.to)||STATUSES[STATUSES.length-1];
+  const btn = document.getElementById('expPill');
+  if(!btn) return;
+  btn.className = 'status-btn '+s.cls;
+  document.getElementById('epMain').textContent = s.main;
+  document.getElementById('epSub').textContent  = s.subFn(time, day);
+}
+
+/* ══ PLAN MESSAGES ══ */
+const PM={
+  'Basic Plan':   {cls:'pm-basic',   ico:'💼',title:'Basic Plan',    desc:'Core TSS features covered. Ideal for essential operations.'},
+  'Standard Plan':{cls:'pm-standard',ico:'⭐',title:'Standard Plan',  desc:'Adds statutory & e-invoice support. Upgrade for more coverage!'},
+  'Premium Plan': {cls:'pm-premium', ico:'🎉',title:'Premium Plan – Best Value!',desc:'Full service + priority resolution + dedicated manager!'},
+};
+
+/* ══ TICK POP ANIMATION ══
+   - popTicks() only called when plan CHANGES
+   - After animation, ticks stay in .ck-selected (enlarged) state
+   - On next plan change, old selected state is cleared, new column animates
+══ */
+let lastPlan=null, popTimers=[];
+
+function clearAllSelected(){
+  document.querySelectorAll('.ck.ck-selected').forEach(el=>el.classList.remove('ck-selected'));
+  document.querySelectorAll('.ck.popped').forEach(el=>el.classList.remove('popped'));
+  document.querySelectorAll('td.td-name').forEach(el=>el.classList.remove('hl-b','hl-s','hl-p'));
+}
+
+function popTicks(planNum){
+  popTimers.forEach(clearTimeout);
+  popTimers=[];
+  clearAllSelected();
+
+  const colSel = planNum===1?'.bv':planNum===2?'.sv':'.pv';
+  const hlCls  = planNum===1?'hl-b':planNum===2?'hl-s':'hl-p';
+  const rows=document.querySelectorAll('tr.frow');
+  let delay=0;
+  rows.forEach(row=>{
+    const plans=(row.dataset.p||'').split(',').map(Number);
+    const nameTd = row.querySelector('td.td-name');
+    if(plans.includes(planNum)){
+      // Highlight feature name
+      if(nameTd) nameTd.classList.add(hlCls);
+
+      const cell=row.querySelector(colSel);
+      if(cell){
+        const ck=cell.querySelector('.ck');
+        if(ck&&!ck.classList.contains('ck-no')){
+          const t=setTimeout(()=>{
+            void ck.offsetWidth;
+            ck.classList.add('popped');
+            setTimeout(()=>{
+              ck.classList.remove('popped');
+              ck.classList.add('ck-selected');
+            }, 480);
+          }, delay);
+          popTimers.push(t);
+          delay+=55;
         }
+      }
+    }
+  });
+}
 
-        function sendMail(service) {
-            const form = document.getElementById('renewalForm');
-            if (!form.checkValidity()) { form.reportValidity(); return; }
-            const c = document.getElementById('company').value, ps = document.getElementById('person').value, s = document.getElementById('serial').value, ph = document.getElementById('phone').value;
-            const sub = `TSS Renewal Order | ${s} | ${c}`;
-            
-            const body = `----------------------------------------\n 🏢 𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍\n----------------------------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐀𝐌𝐄: ${ps}\n𝐌𝐎𝐁𝐈𝐋𝐄 𝐍𝐔𝐌𝐁𝐄𝐑: ${ph}\n\n----------------------------------------\n 🛒 𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n----------------------------------------\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${document.getElementById('flavor').value}\n𝐏𝐋𝐀𝐍: ${document.getElementById('plan').value}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${document.getElementById('duration').value}\n\n----------------------------------------\n 💰 𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n----------------------------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ${document.getElementById('renewalAmt').innerText}\n𝐆𝐒𝐓 (𝟏𝟖%): ${document.getElementById('gstAmount').innerText}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${document.getElementById('grandTotalDisplay').innerText}\n----------------------------------------`;
-            
-            const to = "tally.tss@prajapaticomputers.in", cc = "vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in";
-            let url = service === 'gmail' ? `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&su=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}` : service === 'yahoo' ? `https://compose.mail.yahoo.com/?to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}` : `mailto:${to}?cc=${cc}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
-            window.open(url, '_blank');
-        }
-    </script>
+/* ══ CONFETTI ══ */
+let confRunning=false;
+function confetti(){
+  if(confRunning)return; confRunning=true;
+  const cv=document.getElementById('cc'),ctx=cv.getContext('2d');
+  cv.width=innerWidth;cv.height=innerHeight;cv.style.display='block';
+  const cols=['#f37021','#149ec2','#ffd700','#22c55e','#e879f9','#f43f5e','#38bdf8','#a3e635'];
+  const pcs=Array.from({length:160},()=>({
+    x:Math.random()*cv.width, y:-20-Math.random()*180,
+    w:7+Math.random()*9, h:4+Math.random()*6,
+    r:Math.random()*Math.PI*2, dr:(Math.random()-.5)*.22,
+    vx:(Math.random()-.5)*3, vy:2.5+Math.random()*3.5,
+    c:cols[Math.floor(Math.random()*cols.length)], op:1
+  }));
+  let fr=0;
+  (function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    pcs.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.r+=p.dr;
+      if(fr>85)p.op-=.013;
+      ctx.save();ctx.globalAlpha=Math.max(0,p.op);
+      ctx.translate(p.x,p.y);ctx.rotate(p.r);
+      ctx.fillStyle=p.c;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+      ctx.restore();
+    });
+    fr++;
+    if(fr<165)requestAnimationFrame(draw);
+    else{ctx.clearRect(0,0,cv.width,cv.height);cv.style.display='none';confRunning=false;}
+  })();
+}
+
+/* ══ UPDATE PRICE ══ */
+function updatePrice(){
+  const f=document.getElementById('flavor').value;
+  const p=document.getElementById('plan').value;
+  const d=document.getElementById('duration').value;
+  const isGold=f.includes('Gold');
+  const pNum=p==='Basic Plan'?1:p==='Standard Plan'?2:3;
+
+  // Edition theme
+  const fp=document.getElementById('fPanel');
+  const ec=document.getElementById('edChip');
+  const flSel=document.getElementById('flavor');
+  fp.className='form-panel '+(isGold?'ed-gold':'ed-silver');
+  ec.className='ed-chip '+(isGold?'ec-gold':'ec-silver');
+  ec.textContent=isGold?'Gold · Multi':'Silver · Single';
+  flSel.className='sel '+(isGold?'fl-gold':'fl-silver');
+  document.body.style.background=isGold?'linear-gradient(135deg,#fffbeb,#fef3c7)':'linear-gradient(135deg,#f0f4f8,#e8eef5)';
+
+  // Price calc
+  const base=PR[f][p][d], gst=base*.18, total=base+gst;
+  document.getElementById('renewalAmt').textContent=base.toLocaleString('en-IN');
+  document.getElementById('gstAmt').textContent='₹'+gst.toLocaleString('en-IN');
+  document.getElementById('grandTotalDisplay').textContent='₹'+total.toLocaleString('en-IN');
+
+  // Savings chip
+  const sc=document.getElementById('savChip');
+  if(d==='2 Year'){
+    const sv=(PR[f][p]['1 Year']*2)-base;
+    sc.textContent='SAVE ₹'+sv.toLocaleString('en-IN');
+    sc.style.display='inline-block';
+  } else sc.style.display='none';
+
+  // Plan message + tick pop ONLY when plan actually changes
+  if(p !== lastPlan){
+    const cfg=PM[p];
+    const msg=document.getElementById('planMsg');
+    msg.classList.remove('visible');
+    msg.className='plan-msg '+cfg.cls;
+    document.querySelector('.pm-ico').textContent=cfg.ico;
+    document.getElementById('pmTitle').textContent=cfg.title;
+    document.getElementById('pmDesc').textContent=cfg.desc;
+    requestAnimationFrame(()=>msg.classList.add('visible'));
+
+    // Tick pop — only on plan switch
+    popTicks(pNum);
+
+    lastPlan=p;
+  }
+}
+
+/* ══ SERIAL VALIDATION ══ */
+function validateSerial(el){
+  el.value = el.value.replace(/\D/g,'');
+  // Clear error while user is typing
+  el.classList.remove('inp-error');
+  document.getElementById('serialErr').classList.remove('show');
+}
+
+function digitalRoot(n){
+  while(n >= 10) n = String(n).split('').reduce((a,d)=>a+parseInt(d),0);
+  return n;
+}
+
+function isValidSerial(v){
+  if(!/^7[0-9]{8}$/.test(v)) return false;
+  const root = digitalRoot(v.split('').reduce((a,d)=>a+parseInt(d),0));
+  return root === 9;
+}
+
+function blurSerial(el){
+  const v = el.value.trim();
+  const errEl = document.getElementById('serialErr');
+  if(v.length > 0 && !isValidSerial(v)){
+    el.classList.add('inp-error');
+    errEl.classList.add('show');
+  } else {
+    el.classList.remove('inp-error');
+    errEl.classList.remove('show');
+  }
+}
+
+/* ══ SEND MAIL ══ */
+function sendMail(svc){
+  const c=document.getElementById('company').value.trim();
+  const s=document.getElementById('serial').value.trim();
+  const ps=document.getElementById('person').value.trim();
+  const ph=document.getElementById('phone').value.trim();
+  if(!c||!ps||!ph){alert('Please fill in all fields before sending.');return;}
+  if(!isValidSerial(s)){
+    const el=document.getElementById('serial');
+    el.classList.add('inp-error');
+    document.getElementById('serialErr').classList.add('show');
+    el.focus();
+    return;
+  }
+  const f=document.getElementById('flavor').value;
+  const p=document.getElementById('plan').value;
+  const d=document.getElementById('duration').value;
+  const ba=document.getElementById('renewalAmt').textContent;
+  const gs=document.getElementById('gstAmt').textContent;
+  const gt=document.getElementById('grandTotalDisplay').textContent;
+  const sub=`TSS Renewal Order | ${s} | ${c}`;
+  const body=`----------------------------------------\n 🏢 𝐂𝐎𝐌𝐏𝐀𝐍𝐘 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍\n----------------------------------------\n𝐂𝐎𝐌𝐏𝐀𝐍𝐘: ${c}\n𝐒𝐄𝐑𝐈𝐀𝐋: ${s}\n𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐍𝐀𝐌𝐄: ${ps}\n𝐌𝐎𝐁𝐈𝐋𝐄: ${ph}\n\n----------------------------------------\n 🛒 𝐑𝐄𝐍𝐄𝐖𝐀𝐋 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍\n----------------------------------------\n𝐄𝐃𝐈𝐓𝐈𝐎𝐍: ${f}\n𝐏𝐋𝐀𝐍: ${p}\n𝐏𝐄𝐑𝐈𝐎𝐃: ${d}\n\n----------------------------------------\n 💰 𝐁𝐈𝐋𝐋𝐈𝐍𝐆 𝐁𝐑𝐄𝐀𝐊𝐃𝐎𝐖𝐍\n----------------------------------------\n𝐁𝐀𝐒𝐄 𝐀𝐌𝐎𝐔𝐍𝐓: ₹${ba}\n𝐆𝐒𝐓 (𝟏𝟖%): ${gs}\n𝐍𝐄𝐓 𝐏𝐀𝐘𝐀𝐁𝐋𝐄: ${gt}\n----------------------------------------`;
+  const to='tally.tss@prajapaticomputers.in';
+  const cc='vishalprajapati@prajapaticomputers.in, sales@prajapaticomputers.in, accounts@prajapaticomputers.in, support@prajapaticomputers.in';
+  const url=svc==='gmail'
+    ?`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&su=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`
+    :svc==='yahoo'
+    ?`https://compose.mail.yahoo.com/?to=${encodeURIComponent(to)}&cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`
+    :`mailto:${to}?cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
+  window.open(url,'_blank');
+}
+
+/* ══ INIT ══ */
+function init(){
+  lastPlan = null;
+  tickClock();
+  setInterval(tickClock, 60000); // update every minute — live time
+  updatePrice();
+}
+</script>
 </body>
-</html>	
+</html>
