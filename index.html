@@ -468,7 +468,7 @@ tr.frow td.td-val{
 .pb-sym{font-size:1rem;font-weight:600;color:rgba(255,255,255,.45);margin-right:1px}
 #renewalAmt{
   font-family:'Manrope',sans-serif;
-  font-size:2rem;font-weight:800;
+  font-size:2.8rem;font-weight:800;
   color:#fff;letter-spacing:-.03em;line-height:1;
 }
 .pb-div{display:none}
@@ -490,7 +490,7 @@ tr.frow td.td-val{
 }
 #grandTotalDisplay{
   font-family:'Manrope',sans-serif;
-  font-size:1.4rem;font-weight:800;color:#fff;letter-spacing:-.02em;
+  font-size:1rem;font-weight:800;color:#fff;letter-spacing:-.02em;
 }
 
 /* ── SEND BUTTONS — full width, 3 across ── */
@@ -542,6 +542,134 @@ tr.frow td.td-val{
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET  (≤ 1024px)
+══════════════════════════════════════ */
+@media(max-width:1024px){
+  html{font-size:13px}
+  body{overflow-y:auto;height:auto;min-height:100vh}
+
+  header{min-height:72px;padding:0 18px;gap:12px;flex-wrap:wrap}
+  .logo-wrap img{height:50px}
+  .ph-num{font-size:.88rem;padding:0 8px}
+  .hours-text{font-size:.75rem}
+  .status-btn{padding:7px 12px}
+
+  .wrap{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:10px 16px 16px;
+    height:auto;
+    overflow:visible;
+  }
+
+  /* Left panel — table scrollable */
+  .panel{height:auto;max-height:480px;overflow:hidden}
+  .tbl-wrap{overflow-y:auto}
+
+  /* Right panel — natural height */
+  .form-panel{height:auto}
+  .fbody{overflow:visible;height:auto}
+  .price-send-row{flex:none}
+  .price-block{flex:none}
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE  (≤ 767px)
+══════════════════════════════════════ */
+@media(max-width:767px){
+  html{font-size:13px}
+  body{overflow-y:auto;height:auto;min-height:100vh}
+
+  /* ── HEADER ── */
+  header{
+    min-height:auto;
+    flex-direction:column;
+    align-items:stretch;
+    padding:10px 14px;
+    gap:8px;
+  }
+  .logo-wrap{justify-content:center}
+  .logo-wrap img{height:44px}
+  .h-center{align-items:center}
+  .ph-nums{flex-wrap:wrap;justify-content:center;gap:0}
+  .ph-num{font-size:.82rem;padding:2px 8px;border-right:none;border-bottom:none}
+  .hours-text{font-size:.72rem;justify-content:center}
+  .status-btn{align-self:center;margin-top:2px}
+
+  /* ── LAYOUT ── */
+  .wrap{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:8px 10px 20px;
+    height:auto;overflow:visible;
+  }
+
+  /* ── LEFT PANEL — TABLE ── */
+  .panel{height:auto;overflow:hidden}
+  .tbl-wrap{overflow-x:auto;overflow-y:auto;max-height:360px}
+  table{min-width:420px}
+  colgroup col.c-feat{width:48%}
+  colgroup col.c-plan{width:17.33%}
+
+  thead th{padding:8px 6px;font-size:.7rem}
+  th.th-feat{padding-left:10px;font-size:.65rem}
+  .th-name{font-size:.7rem}
+
+  tr.frow td.td-name{padding:7px 10px;font-size:.88rem}
+  tr.sec-hdr td{padding:5px 10px;font-size:.6rem}
+  .ck{width:22px;height:22px;font-size:.72rem}
+
+  /* ── RIGHT PANEL — FORM ── */
+  .form-panel{height:auto}
+  .fh{padding:8px 12px}
+  .fh-left .ft{font-size:.9rem}
+
+  .plan-msg{padding:7px 10px}
+  .pm-txt strong{font-size:.76rem}
+  .pm-txt span{font-size:.66rem}
+
+  .fbody{padding:8px 10px 12px;gap:7px;overflow:visible;height:auto}
+
+  .inp{padding:11px 11px 11px 34px;font-size:.92rem}
+  .sel{padding:11px 26px 11px 11px;font-size:.92rem}
+  .lbl{font-size:.6rem}
+
+  .g2{grid-template-columns:1fr 1fr;gap:6px}
+  .g2s{grid-template-columns:1fr 1fr;gap:6px}
+
+  /* Price card */
+  .price-send-row{flex:none}
+  .price-block{
+    flex:none;
+    display:flex;flex-direction:column;gap:8px;
+    padding:12px 14px;
+  }
+  .pb-rows{display:flex;flex-direction:row;justify-content:space-between;align-items:center}
+  #renewalAmt{font-size:1.8rem}
+  #grandTotalDisplay{font-size:1.25rem}
+
+  /* Send buttons */
+  .send-sec{margin-top:2px}
+  .send-lbl{font-size:.78rem}
+  .sbtn{padding:10px 6px}
+  .sbtn i{font-size:.95rem}
+  .sbtn span{font-size:.7rem}
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE  (≤ 400px)
+══════════════════════════════════════ */
+@media(max-width:400px){
+  html{font-size:12px}
+  .ph-num{font-size:.78rem;padding:2px 5px}
+  .g2{grid-template-columns:1fr}
+  .g2s{grid-template-columns:1fr}
+  .send-grid{grid-template-columns:1fr 1fr 1fr}
+  .sbtn span{display:none}
+  .sbtn i{font-size:1.1rem}
+}
 </style>
 </head>
 <body onload="init()">
